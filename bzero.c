@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 13:10:47 by hojin             #+#    #+#             */
+/*   Created: 2021/11/17 21:35:12 by hchang            #+#    #+#             */
 /*   Updated: 2021/11/17 21:35:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_bzero(void *s, size_t n)
 {
-	unsigned char	*temp;
-	size_t			i;
-
-	i = 0;
-	temp = (unsigned char *)b;
-	while (i < len)
-	{
-		temp[i] = (unsigned char)c;
-		i++;
-	}
-	return (temp);
+	ft_memset(s, 0, n);
 }

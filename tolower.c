@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   tolower.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 13:10:47 by hojin             #+#    #+#             */
-/*   Updated: 2021/11/17 21:35:35 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/17 21:40:18 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/17 21:41:25 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, size_t len)
+int	is_upper(char c)
 {
-	unsigned char	*temp;
-	size_t			i;
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
 
-	i = 0;
-	temp = (unsigned char *)b;
-	while (i < len)
-	{
-		temp[i] = (unsigned char)c;
-		i++;
-	}
-	return (temp);
+
+int	ft_tolower(int c)
+{
+	if (is_upper(c))
+		c += 48;
+	return (c);
 }

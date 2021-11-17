@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojin <hchang@student.42seoul.kr>          +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 14:36:09 by hojin             #+#    #+#             */
-/*   Updated: 2021/11/09 14:40:08 by hojin            ###   ########.fr       */
+/*   Created: 2021/11/17 21:20:51 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/17 21:20:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
-int main()
+size_t	ft_strlen(const char *s)
 {
-	char a[20];
+	unsigned int	cnt;
 
-	memset(a, '2', sizeof(a));
-	for(int i=0; i< (sizeof(a)/sizeof(char)); i++)
-	{ 
-	printf("%c\n",a[i]); 
-	}
+	cnt = 0;
+	while (s[cnt])
+		cnt++;
+	return (cnt);
 }
