@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tolower.c                                          :+:      :+:    :+:   */
+/*   strrchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 21:40:18 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/17 21:41:25 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/19 16:38:42 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/19 16:54:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_upper(char c)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
-}
+	char	*result;
 
-
-int	ft_tolower(int c)
-{
-	if (is_upper(c))
-		c += 48;
-	return (c);
+	while (*s)
+	{
+		if (*s == c)
+			result = (char *)s;
+		s++;
+	}
+	return (result);
 }
