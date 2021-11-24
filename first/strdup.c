@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strchr.c                                           :+:      :+:    :+:   */
+/*   strdup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 21:42:04 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/24 16:31:48 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/24 14:08:52 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/24 16:31:51 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strdup(const char *s1)
 {
-	while (*s)
+	int		idx;
+	char	*result;
+
+	idx = 0;
+	while (s1[idx])
+		idx++;
+	result = malloc(sizeof(char) * (idx + 1));
+	if (!(result))
+		return (NULL);
+	idx = 0;
+	while (s1[idx])
 	{
-		if (*s == c)
-			return ((char *)s);
-		s++;
+		result[idx] = s1[idx];
+		idx++;
 	}
-	return ((char *)s);
+	result[idx] = '\0';
+	return (result);
 }

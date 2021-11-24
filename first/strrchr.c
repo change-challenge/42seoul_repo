@@ -6,9 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:38:42 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/19 16:54:22 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/24 16:32:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {

@@ -6,9 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:10:47 by hojin             #+#    #+#             */
-/*   Updated: 2021/11/17 21:35:35 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/24 16:31:44 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
 {

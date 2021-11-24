@@ -6,9 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 14:20:26 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/19 16:38:13 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/24 16:55:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static int	ft_isspace(char c)
 {

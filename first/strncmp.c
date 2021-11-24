@@ -6,9 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:55:42 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/19 16:56:07 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/24 16:32:00 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	strncmp(const char *s1, const char *s2, size_t n)
 {
