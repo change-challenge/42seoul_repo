@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 21:35:12 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/24 16:31:16 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/19 16:55:42 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/29 18:25:39 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+int	strncmp(const char *s1, const char *s2, size_t n)
 {
-	ft_memset(s, 0, n);
+	while (n)
+	{
+		if (*s1 > *s2)
+			return (1);
+		else if (*s1 < *s2)
+			return (-1);
+		n--;
+		s1++;
+		s2++;
+	}
+	return (0);
 }

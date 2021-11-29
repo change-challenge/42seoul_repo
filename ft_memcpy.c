@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:22:20 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/24 17:03:45 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/29 18:29:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	int					idx;
-	unsigned char 		*dst2;
-	const unsigned char *src2;
+	unsigned char		*dst2;
+	const unsigned char	*src2;
 
 	idx = 0;
 	if (dst == NULL && src == NULL)

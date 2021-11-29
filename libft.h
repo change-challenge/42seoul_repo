@@ -6,28 +6,31 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:26:20 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/24 16:34:23 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/29 21:33:19 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 #define LIBFT_H
-
 #include <stdlib.h>
 #include <string.h>
 
 int		ft_atoi(const char *str);
+void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(char c);
 int		ft_isalpha(char c);
 int		ft_isascii(char c);
 int		ft_isdigit(char c);
 int		ft_isprint(char c);
-int		strncmp(const char *s1, const char *s2, size_t n);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		is_upper(char c);
 int		is_lower(char c);
 void	*ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/17 21:36:28 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/24 16:32:09 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/17 21:20:51 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/29 16:44:23 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_lower(char c)
+size_t	ft_strlen(const char *s)
 {
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
-}
+	unsigned int	cnt;
 
-int	ft_toupper(int c)
-{
-	if (is_lower(c))
-		c -= 48;
-	return (c);
+	cnt = 0;
+	while (s[cnt])
+		cnt++;
+	return (cnt);
 }
