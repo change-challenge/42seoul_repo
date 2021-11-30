@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:55:42 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/29 18:25:39 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/30 15:27:41 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 int	strncmp(const char *s1, const char *s2, size_t n)
 {
-	while (n)
+	while (n--)
 	{
-		if (*s1 > *s2)
-			return (1);
-		else if (*s1 < *s2)
-			return (-1);
-		n--;
+		if (*s1 != *s2)
+			return (*s1-*s2);
 		s1++;
 		s2++;
 	}

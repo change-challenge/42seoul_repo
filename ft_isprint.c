@@ -6,13 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 21:16:41 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/29 19:48:46 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/30 16:52:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
 	if (c < 32 || c > 126)
 		return (0);

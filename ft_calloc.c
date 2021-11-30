@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:21:50 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/29 19:04:33 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/30 17:49:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_calloc(size_t count, size_t size)
 	res = malloc(count * size);
 	if (res == NULL)
 		return (NULL);
-	ft_bzero(res, count);
+	ft_bzero(res, (size * count));
 	return (res);
 }

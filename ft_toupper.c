@@ -6,13 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 21:36:28 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/29 20:04:17 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/30 16:54:26 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_lower(char c)
+static int	is_lower(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (1);

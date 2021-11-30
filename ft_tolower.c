@@ -6,13 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 21:40:18 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/29 20:04:14 by hchang           ###   ########.fr       */
+/*   Updated: 2021/11/30 16:55:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_upper(char c)
+static int	is_upper(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (1);
