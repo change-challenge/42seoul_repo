@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hchang <hchang@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2021/11/29 17:23:48 by hchang           ###   ########.fr        #
+#    Updated: 2021/12/05 22:02:43 by hojinjang        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 NAME := libft.a
 
 AR := ar
@@ -39,6 +40,9 @@ CFILE_A := ft_atoi.c \
 		ft_strrchr.c \
 		ft_tolower.c \
 		ft_toupper.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
 
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 
