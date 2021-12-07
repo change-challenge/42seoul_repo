@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+         #
+#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2021/12/06 21:33:28 by hojinjang        ###   ########.fr        #
+#    Updated: 2021/12/07 17:21:05 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,11 @@ CFILE_A := ft_atoi.c \
 		ft_itoa.c \
 		ft_strmapi.c \
 		ft_striteri.c \
+		ft_striteri.c \
+		ft_putchar_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_putstr_fd.c \
 
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 
@@ -67,4 +72,3 @@ fclean: clean
 re: clean all
 
 .PHONY: all clean fclean re
-

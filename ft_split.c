@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 00:38:54 by hojinjang         #+#    #+#             */
-/*   Updated: 2021/12/06 14:32:54 by hojinjang        ###   ########.fr       */
+/*   Updated: 2021/12/07 18:25:13 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ char	**ft_split(char const *s, char c)
 	idx = 0;
 	tmp = (char *)s;
 	room_size = ft_howmany(tmp, c);
-	//printf("room_size : %zu\n", room_size);
-	if (!(result = calloc(sizeof(char*), (room_size + 1))))
+	// printf("room_size : %zu\n", room_size);
+	if (!(result = calloc(sizeof(char*), (room_size))))
 		return (NULL);
 	while (*tmp)
 	{
@@ -111,22 +111,14 @@ char	**ft_split(char const *s, char c)
 }
 
 
-int main()
-{
-	char **result = ft_split("split  ||this|for|me|||||!|", '|');
-	//char **result2 = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
+// int main()
+// {
+// 	char **result = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
 
-	int idx = 0;
-	while (result[idx])
-	{
-		printf("%s\n",result[idx]);
-		idx++;
-	}
-	//printf("====================================\n");
-	idx = 0;
-	//while (result2[idx])
-	//{
-	//	printf("%d. %s\n",idx, result2[idx]);
-	//	idx++;
-	//}
-}
+// 	int idx = 0;
+// 	while (result[idx])
+// 	{
+// 		printf("%s\n",result[idx]);
+// 		idx++;
+// 	}
+// }

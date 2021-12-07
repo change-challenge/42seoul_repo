@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 21:27:14 by hojinjang         #+#    #+#             */
-/*   Updated: 2021/12/06 21:45:36 by hojinjang        ###   ########.fr       */
+/*   Updated: 2021/12/07 18:19:41 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 
 	idx = 0;
 	len = ft_strlen(s);
-	if (!s && !f)
+	if (!s || !f)
 		return ;
-	while (sidx < len)
+	while (idx < len)
 	{
 		(*f)(idx, s);
 		s++;
