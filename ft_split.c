@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 00:38:54 by hojinjang         #+#    #+#             */
-/*   Updated: 2021/12/06 12:00:03 by hchang           ###   ########.fr       */
+/*   Updated: 2021/12/06 14:32:54 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,35 @@ static size_t	ft_howmany(char const *s, char c)
 	return (cnt);
 }
 
-static size_t	ft_wordlen(const char *s, char c)
+static size_t	ft_wordlen(char *s, char c)
 {
 	size_t	len;
 
-	printf("whattt!!!\n");
-
+	//printf("whattt!!!\n");
 	len = 0;
-	while (*s != c || *s)
+	while (*s != c && *s)
 	{
 		s++;
 		len++;
 	}
-	printf("%zu\n",len);
+
 	return (len);
 }
 
-static char *ft_dup(const char *c, size_t len)
+static char *ft_dup(char *c, size_t len)
 {
 	char	*w_result;
+	size_t	idx;
 
-	printf("whattt\n");
+	idx = 0;
 	w_result = calloc(sizeof(char), (len + 1));
 	if (!(w_result))
 		return (NULL);
 	while(len--)
-		*w_result++ = *c++;
+	{
+		w_result[idx] = c[idx];
+		idx++;
+	}
 	return (w_result);
 }
 
@@ -81,30 +84,28 @@ char	**ft_split(char const *s, char c)
 {
 	size_t	idx;
 	size_t	room_size;
+	char	*tmp;
 	char	**result;
 
 	idx = 0;
-	room_size = ft_howmany(s, c);
+	tmp = (char *)s;
+	room_size = ft_howmany(tmp, c);
+	//printf("room_size : %zu\n", room_size);
 	if (!(result = calloc(sizeof(char*), (room_size + 1))))
 		return (NULL);
-	while (*s)
+	while (*tmp)
 	{
-		printf("here\n");
-		while (*s == c)
-			s++;
-		printf("here222\n");	
-		result[idx] = ft_dup(s, ft_wordlen(s, c));
-		printf("here333\n");	
-		s += ft_wordlen(s, c);
-		printf("here444\n");	
+		//printf("============\n");
+		while (*tmp == c)
+			tmp++;
+		result[idx] = ft_dup(tmp, ft_wordlen(tmp, c));
+		tmp += ft_wordlen(tmp, c);
 		if (!result[idx])
 		{
-			printf("here555\n");	
 			ft_free(result, idx);
 			return (NULL);
 		}
-		printf("there\n");
-
+		idx++;
 	}
 	return (result);
 }
@@ -112,12 +113,20 @@ char	**ft_split(char const *s, char c)
 
 int main()
 {
-	char **result = ft_split("hojin chang is a person", ' ');
+	char **result = ft_split("split  ||this|for|me|||||!|", '|');
+	//char **result2 = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
 
 	int idx = 0;
-	while (*result)
+	while (result[idx])
 	{
-		printf("1. %s\n", result[idx]);
+		printf("%s\n",result[idx]);
 		idx++;
 	}
+	//printf("====================================\n");
+	idx = 0;
+	//while (result2[idx])
+	//{
+	//	printf("%d. %s\n",idx, result2[idx]);
+	//	idx++;
+	//}
 }

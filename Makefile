@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
+#    By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2021/12/06 11:35:08 by hchang           ###   ########.fr        #
+#    Updated: 2021/12/06 21:33:28 by hojinjang        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,9 @@ CFILE_A := ft_atoi.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
 		ft_split.c \
+		ft_itoa.c \
+		ft_strmapi.c \
+		ft_striteri.c \
 
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 
