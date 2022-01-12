@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2022/01/12 18:33:19 by hchang           ###   ########.fr        #
+#    Updated: 2022/01/12 20:40:27 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,11 +54,10 @@ CFILE_A := ft_atoi.c \
 		ft_putstr_fd.c \
 
 CFILE_BONUS := ft_lstnew.c \
-		ft_lstadd_front \
+		ft_lstadd_front.c \
 
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 CFILE_BONUS_OBJS := $(CFILE_BONUS:.c=.o)
-
 
 ifdef WITH_BONUS
 	CFILE_OBJS = $(CFILE_BONUS_OBJS)
@@ -75,7 +74,7 @@ $(NAME): $(CFILE_OBJS)
 all: $(NAME)
 
 clean:
-	rm -rf $(CFILE_A_OBJS)
+	rm -rf $(CFILE_A_OBJS) $(CFILE_BONUS_OBJS)
 
 fclean: clean
 	rm -rf $(NAME)

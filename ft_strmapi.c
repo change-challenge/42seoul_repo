@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 20:32:58 by hojinjang         #+#    #+#             */
-/*   Updated: 2021/12/06 21:38:52 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/01/12 20:20:53 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (0);
 	result = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!result)
-		return (0);
+		return (NULL);
 	while (idx < ft_strlen(s))
 	{
 		result[idx] = f(idx, s[idx]);
 		idx++;
 	}
-	result[idx] = '\0';
+	result[idx] = 0;
 	return (result);
 }
