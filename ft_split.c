@@ -6,119 +6,102 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 00:38:54 by hojinjang         #+#    #+#             */
-/*   Updated: 2021/12/07 18:25:13 by hchang           ###   ########.fr       */
+/*   Updated: 2022/01/12 16:44:27 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <stdio.h>
-
-static size_t	ft_howmany(char const *s, char c)
+int	split_count(char const *s, char c)
 {
-	size_t	idx;
-	size_t	cnt;
-	size_t	flag;
+	int	idx;
+	int	cnt;
 
 	idx = 0;
 	cnt = 0;
-	flag = 0;
 	while (s[idx])
 	{
-		if (s[idx] != c && flag == 0)
+		if (s[idx] == c)
+			idx++;
+		else
 		{
-			flag = 1;
 			cnt++;
+			while (s[idx] && s[idx] != c)
+				idx++;
 		}
-		else if (s[idx] == c)
-			flag = 0;
-		idx++;
 	}
 	return (cnt);
 }
 
-static size_t	ft_wordlen(char *s, char c)
+char	**split_free(char **result, int r_idx)
 {
-	size_t	len;
-
-	//printf("whattt!!!\n");
-	len = 0;
-	while (*s != c && *s)
-	{
-		s++;
-		len++;
-	}
-
-	return (len);
-}
-
-static char *ft_dup(char *c, size_t len)
-{
-	char	*w_result;
-	size_t	idx;
+	int	idx;
 
 	idx = 0;
-	w_result = calloc(sizeof(char), (len + 1));
-	if (!(w_result))
-		return (NULL);
-	while(len--)
+	while (idx < r_idx)
 	{
-		w_result[idx] = c[idx];
+		free(result[idx]);
 		idx++;
-	}
-	return (w_result);
+	}	
+	free(result);
+	return (result);
 }
 
-static void ft_free(char **s, int idx)
+char	*split_make(char *r_word, char const *base, int b_base, int word_len)
 {
-	while (idx-- > 0)
+	int	idx;
+
+	idx = 0;
+	while (word_len > 0)
 	{
-		free(s[idx]);
-		s[idx] = NULL;
+		r_word[idx] = base[b_base - word_len];
+		idx++;
+		word_len--;
 	}
-	free(s);
-	s = NULL;
+	r_word[idx] = '\0';
+	return (r_word);
+}
+
+char	**split_work(char **result, char const *base, char deli, int word_cnt)
+{
+	int	r_idx;
+	int	b_idx;
+	int	word_len;
+
+	r_idx = 0;
+	b_idx = 0;
+	word_len = 0;
+	while (base[b_idx] && r_idx < word_cnt)
+	{
+		while (base[b_idx] && base[b_idx] == deli)
+			b_idx++;
+		while (base[b_idx] && base[b_idx] != deli)
+		{
+			b_idx++;
+			word_len++;
+		}
+		result[r_idx] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!(result[r_idx]))
+			return (split_free(result, r_idx));
+		result[r_idx] = split_make(result[r_idx], base, b_idx, word_len);
+		word_len = 0;
+		r_idx++;
+	}
+	result[r_idx] = 0;
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	idx;
-	size_t	room_size;
-	char	*tmp;
-	char	**result;
+	int		word_cnt;
+	char	**result_split;
 
-	idx = 0;
-	tmp = (char *)s;
-	room_size = ft_howmany(tmp, c);
-	// printf("room_size : %zu\n", room_size);
-	if (!(result = calloc(sizeof(char*), (room_size))))
+	if (s == 0)
 		return (NULL);
-	while (*tmp)
-	{
-		//printf("============\n");
-		while (*tmp == c)
-			tmp++;
-		result[idx] = ft_dup(tmp, ft_wordlen(tmp, c));
-		tmp += ft_wordlen(tmp, c);
-		if (!result[idx])
-		{
-			ft_free(result, idx);
-			return (NULL);
-		}
-		idx++;
-	}
-	return (result);
+	word_cnt = split_count(s, c);
+	result_split = (char **)malloc(sizeof(char *) * (word_cnt + 1));
+	if (!(result_split))
+		return (NULL);
+	result_split = split_work(result_split, s, c, word_cnt);
+	return (result_split);
 }
-
-
-// int main()
-// {
-// 	char **result = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
-
-// 	int idx = 0;
-// 	while (result[idx])
-// 	{
-// 		printf("%s\n",result[idx]);
-// 		idx++;
-// 	}
-// }

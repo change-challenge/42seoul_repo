@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:08:52 by hchang            #+#    #+#             */
-/*   Updated: 2022/01/12 10:06:02 by hchang           ###   ########.fr       */
+/*   Created: 2022/01/12 18:32:03 by hchang            #+#    #+#             */
+/*   Updated: 2022/01/12 18:32:34 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int		idx;
-	char	*result;
 
-	idx = 0;
-	while (s1[idx])
-		idx++;
-	result = malloc(sizeof(char) * (idx + 1));
-	if (!(result))
-		return (NULL);
-	idx = 0;
-	while (s1[idx])
-	{
-		result[idx] = s1[idx];
-		idx++;
-	}
-	result[idx] = '\0';
-	return (result);
 }

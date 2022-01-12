@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:22:42 by hchang            #+#    #+#             */
-/*   Updated: 2021/11/30 17:59:11 by hchang           ###   ########.fr       */
+/*   Updated: 2022/01/12 18:01:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dst[dst_size + idx] = src[idx];
 		idx++;
 	}
+	if (dst_size > dstsize)
+		return (dstsize + src_size);
 	dst[dst_size + idx] = '\0';
-	if (dst_size < dstsize)
-		return (dst_size + src_size);
-	return (dstsize + src_size);
+	return (dst_size + src_size);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	char *dest = (char *)malloc(sizeof(*dest) * 15);
-// 	memset(dest, 'r', 15);
-// 	ft_strlcat(dest, "lorem ipsum dolor sit amet", 5);
-// 	printf("1. %s\n", dest);
-// }
