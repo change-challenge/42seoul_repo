@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
+#    By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2022/01/12 20:40:27 by hchang           ###   ########.fr        #
+#    Updated: 2022/01/19 14:28:24 by hojinjang        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,12 @@ CFILE_A := ft_atoi.c \
 
 CFILE_BONUS := ft_lstnew.c \
 		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+
 
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 CFILE_BONUS_OBJS := $(CFILE_BONUS:.c=.o)

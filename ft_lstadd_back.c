@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 16:22:42 by hchang            #+#    #+#             */
-/*   Updated: 2022/01/19 15:27:18 by hojinjang        ###   ########.fr       */
+/*   Created: 2022/01/19 11:44:03 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/01/19 16:50:55 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	dst_len;
-	size_t	src_len;
-	size_t	idx;
+		t_list *tmp;
 
-	idx = 0;
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	if (dst_len + 1 > dstsize)
-		return (dstsize + src_len);
-	while ((dst_len + idx < dstsize - 1) && src[idx])
-	{
-		dst[dst_len + idx] = src[idx];
-		idx++;
-	}
-	dst[dst_len + idx] = '\0';
-	return (dst_len + src_len);
+		tmp = *lst;
+		if (new == NULL || lst == NULL)
+			return ;
+		else if (*lst == NULL)
+		{
+			*lst = new;
+			return ;
+		}
+		while (*lst->next != NULL)
+			*lst = *lst->next;
+		*lst->next = new;
+		*lst = tmp;
 }
