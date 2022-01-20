@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2022/01/20 20:52:15 by hchang           ###   ########.fr        #
+#    Updated: 2022/01/20 19:56:46 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,4 +90,4 @@ re: clean all
 bonus:
 	$(MAKE) WITH_BONUS=1 $(NAME)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

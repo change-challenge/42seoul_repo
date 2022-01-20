@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/29 16:15:25 by hchang            #+#    #+#              #
-#    Updated: 2022/01/20 20:52:15 by hchang           ###   ########.fr        #
+#    Updated: 2022/01/20 20:38:41 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,16 +66,10 @@ CFILE_BONUS := ft_lstnew.c \
 CFILE_A_OBJS := $(CFILE_A:.c=.o)
 CFILE_BONUS_OBJS := $(CFILE_BONUS:.c=.o)
 
-ifdef WITH_BONUS
-	CFILE_OBJS = $(CFILE_BONUS_OBJS)
-else
-	CFILE_OBJS = $(CFILE_A_OBJS)
-endif
-
 %.o : %.c
 	$(GCC) $(CFLAGS) -c -o $@ $<
 
-$(NAME): $(CFILE_OBJS)
+$(NAME): $(CFILE_A_OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 all: $(NAME)
@@ -87,7 +81,8 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: clean all
-bonus:
-	$(MAKE) WITH_BONUS=1 $(NAME)
+
+bonus: $(CFILE_A_OBJS) $(CFILE_BONUS_OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $^
 
 .PHONY: all clean fclean re bonus
