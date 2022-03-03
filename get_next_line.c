@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/02 15:42:19 by hchang           ###   ########.fr       */
+/*   Updated: 2022/03/03 21:44:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,9 @@ char *get_next_line(int fd)
 	char 		*result;
 
 
-	// 오히려 마지막에 result malloc과 input 
+// 오히려 마지막에 result malloc과 input 
 
 }
-
-
-
-
-
-
-
-
-
-
 
 
 int main() 
