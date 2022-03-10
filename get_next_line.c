@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/03 21:44:20 by hchang           ###   ########.fr       */
+/*   Updated: 2022/03/10 18:35:26 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,60 +15,97 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-int	check_str_null_eof(char *tmp)
+char *make_str(size_t full_len, t_list* gnlst)
 {
-	while (*tmp++)
+	char *str;
+
+	str = (char *)malloc(sizeof(char) * (full_len + 1));
+	while (gnlst->next !=  NULL && full_len--)
 	{
-		if (*tmp == '\0' || *tmp == '\n')
-			return (ERROR);
+		while (*gnlst->str)
+			*str++ = *gnlst->str++;
+		gnlst = gnlst->next;
 	}
-	return (SUCCESS);
+	return (str);
 }
 
-int	lstadd_front(t_list *gnl_list, char *tmp)
+void	put_str(char *gnl_str, char *tmp)
+{
+	while (*tmp)
+		*gnl_str++ = *tmp++;
+}
+
+int	lstadd_front(t_list *gnlst, char *tmp)
 {
 	int	len;
+	char *tmp_pct;
 
-	while (*tmp == '\0' || *tmp == '\n')
+	tmp_pct = tmp;
+	printf("tmp : %s\n", tmp);
+	while (*tmp != '\0' || *tmp != '\n')
 	{
 		len++;
 		tmp++;
 	}
-	while (gnl_list->next == NULL)
+	while (gnlst->next == NULL)
 	{
-		gnl_list->str = (char*)malloc(sizeof(char) * (len + 1));
-		gnl_list = gnl_list->next;
+		gnlst->str = (char*)malloc(sizeof(char) * (len + 1));
+		put_str(gnlst->str, tmp);
+		gnlst = gnlst->next;
 	}
+	tmp = tmp_pct;
 	return (len);
+}
+
+t_list*	make_linked_list(t_list *gnlst, char *back_up, size_t *f_len, int fd)
+{
+	char	*str;
+	int		len;
+
+	f_len = 0;
+	if (back_up)
+	{
+		len = lstadd_front(gnlst, back_up);
+		f_len += len;
+	}
+	printf("fd : %d\n", fd);
+	while (read(fd, str, 5) != -1)
+	{
+		printf("HERE\n");
+		len = lstadd_front(gnlst, str);
+		f_len += len;
+	}
+	return (gnlst);
 }
 
 char *get_next_line(int fd)
 {
 	static char	*back_up;
-	t_list		*gnl_list;
-	size_t		len;
-	char		*tmp;
-	char 		*result;
+	t_list		*gnlst;
+	size_t		full_len;
 
+	if (fd < 0)
+		return (NULL);
+	printf("fd : %d\n", fd);
+	gnlst = make_linked_list(gnlst, back_up, &full_len, fd);
+	return (make_str(full_len, gnlst));
 
-// 오히려 마지막에 result malloc과 input 
-
+	// char *str;
+	// printf("address : %p || str : %s\n", &str, str);
+	// read(fd, str, 5);
+	// printf("address : %p || str : %s\n", &str, str);
+	// read(fd, str, 5);
+	// printf("address : %p || str : %s\n", &str, str);
+	// return (str);
 }
-
 
 int main() 
 { 
-	char 	str[BUFFER_SIZE]; 
 	int		fd;
-	int		read_len;
+	char*	tmp;
 
-	
 	fd = open("./a.txt", O_RDONLY);
-	// read_len = read(fd, str, BUFFER_SIZE);
-	// str[BUFFER_SIZE] = '\0';
-	// printf("|%s|\n", str);
-
-
-	printf("|%d|\n", read_len);
+	printf("fd : %d\n", fd);
+	printf("return : |%s|\n", get_next_line(fd));
 	close(fd);
 }
