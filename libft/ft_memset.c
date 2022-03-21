@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/09 13:10:47 by hojin             #+#    #+#             */
+/*   Updated: 2021/11/29 18:28:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+void	*ft_memset(void *b, int c, size_t len)
+{	
+	unsigned char	*temp;
+	size_t			i;
 
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
-{
-	char			*str;
-	struct s_list	*next;
-}	t_list;
-
-// char *get_next_line(int fd);
-
-#endif
+	i = 0;
+	temp = (unsigned char *)b;
+	while (i < len)
+	{
+		temp[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
+}

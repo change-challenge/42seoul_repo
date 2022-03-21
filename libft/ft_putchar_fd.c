@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/12/06 21:46:05 by hojinjang         #+#    #+#             */
+/*   Updated: 2021/12/07 17:03:38 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+void	ft_putchar_fd(char c, int fd)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
-
-// char *get_next_line(int fd);
-
-#endif
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/10 18:35:26 by hchang           ###   ########.fr       */
+/*   Updated: 2022/03/21 14:06:05 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,97 +15,152 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char *make_str(size_t full_len, t_list* gnlst)
-{
-	char *str;
+// char *make_str(size_t full_len, t_list* gnlst)
+// {
+// 	char *str;
 
-	str = (char *)malloc(sizeof(char) * (full_len + 1));
-	while (gnlst->next !=  NULL && full_len--)
-	{
-		while (*gnlst->str)
-			*str++ = *gnlst->str++;
-		gnlst = gnlst->next;
-	}
-	return (str);
-}
+// 	str = (char *)malloc(sizeof(char) * (full_len + 1));
+// 	while (gnlst->next !=  NULL && full_len--)
+// 	{
+// 		while (*gnlst->str)
+// 			*str++ = *gnlst->str++;
+// 		gnlst = gnlst->next;
+// 	}
+// 	return (str);
+// }
 
-void	put_str(char *gnl_str, char *tmp)
-{
-	while (*tmp)
-		*gnl_str++ = *tmp++;
-}
+// void	put_str(char *gnl_str, char *tmp)
+// {
+// 	while (*tmp)
+// 		*gnl_str++ = *tmp++;
+// }
 
-int	lstadd_front(t_list *gnlst, char *tmp)
+int	lstadd_front(t_list *gnlst, char *tmp, char *back_up)
 {
 	int	len;
-	char *tmp_pct;
+	int s_len;
 
-	tmp_pct = tmp;
-	printf("tmp : %s\n", tmp);
+	len = 0;
 	while (*tmp != '\0' || *tmp != '\n')
-	{
 		len++;
-		tmp++;
-	}
-	while (gnlst->next == NULL)
-	{
-		gnlst->str = (char*)malloc(sizeof(char) * (len + 1));
-		put_str(gnlst->str, tmp);
+	s_len = BUFFER_SIZE - len;
+	while (!(gnlst->next == NULL))
 		gnlst = gnlst->next;
+	gnlst->str = (char*)malloc(sizeof(char) * (len + 1));
+	if (gnlst->str == NULL)
+		return (0);
+	while (len--)
+		*gnlst->str++ = *tmp++;
+	if (s_len)
+	{
+		while (s_len--)
+			*back_up++ = *tmp++;
 	}
-	tmp = tmp_pct;
 	return (len);
 }
 
-t_list*	make_linked_list(t_list *gnlst, char *back_up, size_t *f_len, int fd)
+int	ft_strchr(const char *str, int c)
 {
-	char	*str;
-	int		len;
+	int	idx;
 
-	f_len = 0;
-	if (back_up)
+	idx = 0;
+	while (str[idx])
+		idx++;
+	if (str == NULL)
+		return (FAIL);
+	while (str[idx])
 	{
-		len = lstadd_front(gnlst, back_up);
-		f_len += len;
+		if (str[idx] == (unsigned char)c)
+			return (FAIL);
+		idx++;
 	}
-	printf("fd : %d\n", fd);
-	while (read(fd, str, 5) != -1)
+	return (SUCCESS);
+}
+
+void println(t_list *gnlst)
+{
+	while (gnlst->next)
 	{
-		printf("HERE\n");
-		len = lstadd_front(gnlst, str);
-		f_len += len;
+		printf("%s\n", gnlst->str);
+		gnlst = gnlst->next;
 	}
-	return (gnlst);
 }
 
 char *get_next_line(int fd)
 {
 	static char	*back_up;
-	t_list		*gnlst;
-	size_t		full_len;
+	char		tmp[BUFFER_SIZE + 1];
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	printf("fd : %d\n", fd);
-	gnlst = make_linked_list(gnlst, back_up, &full_len, fd);
-	return (make_str(full_len, gnlst));
+	
 
-	// char *str;
-	// printf("address : %p || str : %s\n", &str, str);
-	// read(fd, str, 5);
-	// printf("address : %p || str : %s\n", &str, str);
-	// read(fd, str, 5);
-	// printf("address : %p || str : %s\n", &str, str);
-	// return (str);
+
+
+	while (ft_strchr(tmp, '\n'))
+	{
+		read(fd, tmp, BUFFER_SIZE);
+
+	}
+	return (NULL);
 }
 
-int main() 
-{ 
-	int		fd;
-	char*	tmp;
+// TO-DO: 
 
-	fd = open("./a.txt", O_RDONLY);
-	printf("fd : %d\n", fd);
-	printf("return : |%s|\n", get_next_line(fd));
-	close(fd);
+int main(void)
+{
+	int fd;
+	char line[BUFFER_SIZE + 1];
+
+	fd = open("test.txt", O_RDONLY);
+	get_next_line(fd);
+	return (0);
 }
+
+// int	main(void)
+// {
+// 	int		temp;
+// 	int		fd;
+// 	char	*line;
+
+// 	fd = open("test.txt", O_RDONLY);
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s\n", line);
+// 		free(line);
+// 	}
+// 	printf("%s\n", line);
+// 	free(line);
+// 	close(fd);
+// 	return (0);
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// TO-DO
+// 1. 금요일 지원금 언제 들어오는 지 
+// 2. 42서울 애플 할인 되는 지

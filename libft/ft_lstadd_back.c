@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2022/01/19 11:44:03 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/01/20 20:17:30 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	t_list	*tmp;
 
-// char *get_next_line(int fd);
-
-#endif
+	tmp = *lst;
+	if (new == NULL || lst == NULL)
+		return ;
+	else if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	while ((*lst)->next != NULL)
+		*lst = (*lst)->next;
+	(*lst)->next = new;
+	*lst = tmp;
+}

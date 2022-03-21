@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2022/01/20 19:01:37 by hchang            #+#    #+#             */
+/*   Updated: 2022/01/20 20:20:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	t_list	*tmp;
+	t_list	*new;
 
-// char *get_next_line(int fd);
-
-#endif
+	tmp = NULL;
+	if (lst == NULL || f == NULL)
+		return (0);
+	while (lst)
+	{
+		new = ft_lstnew(f(lst->content));
+		if (!new)
+		{
+			del(new);
+			return (0);
+		}
+		ft_lstadd_back(&tmp, new);
+		lst = lst->next;
+	}
+	return (tmp);
+}

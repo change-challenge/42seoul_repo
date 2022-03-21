@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/29 16:22:54 by hchang            #+#    #+#             */
+/*   Updated: 2021/12/03 21:13:07 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	size_t	needle_size;
 
-// char *get_next_line(int fd);
-
-#endif
+	needle_size = ft_strlen(needle);
+	if (*needle == '\0')
+		return ((char *)haystack);
+	while (*haystack && len)
+	{
+		if (ft_strncmp(haystack, needle, needle_size) == 0
+			&& len >= needle_size)
+			return ((char *)haystack);
+		haystack++;
+		len--;
+	}
+	return (0);
+}	

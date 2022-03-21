@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/29 16:22:46 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 18:06:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	size_t	idx;
+	size_t	src_len;
 
-// char *get_next_line(int fd);
-
-#endif
+	idx = 0;
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize != 0)
+	{
+		while (idx < (dstsize - 1) && src[idx])
+		{
+			dst[idx] = src[idx];
+			idx++;
+		}
+		dst[idx] = '\0';
+	}
+	return (src_len);
+}

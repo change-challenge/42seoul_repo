@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/29 16:22:33 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 15:31:50 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	const unsigned char	*s1_1;
+	const unsigned char	*s2_1;
 
-// char *get_next_line(int fd);
-
-#endif
+	s1_1 = s1;
+	s2_1 = s2;
+	while (n--)
+	{
+		if (*s1_1 != *s2_1)
+			return (*s1_1 - *s2_1);
+		s1_1++;
+		s2_1++;
+	}
+	return (0);
+}

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/19 16:55:42 by hchang            #+#    #+#             */
+/*   Updated: 2021/12/03 20:54:34 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
-
-// char *get_next_line(int fd);
-
-#endif
+	while (n--)
+	{
+		if ((unsigned char) *s1 != (unsigned char) *s2
+			|| *s1 == '\0' || *s2 == '\0')
+			return ((unsigned char) *s1 - (unsigned char) *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
+}

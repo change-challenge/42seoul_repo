@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/17 21:35:12 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/29 18:27:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+void	*ft_bzero(void *s, size_t n)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	unsigned char	*temp;
+	size_t			i;
 
-// char *get_next_line(int fd);
-
-#endif
+	i = 0;
+	temp = (unsigned char *)s;
+	while (i < n)
+	{
+		temp[i] = 0;
+		i++;
+	}
+	return (s);
+}

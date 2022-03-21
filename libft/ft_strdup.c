@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 13:58:49 by hchang           ###   ########.fr       */
+/*   Created: 2021/11/24 14:08:52 by hchang            #+#    #+#             */
+/*   Updated: 2022/01/12 10:06:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 5
-#ifndef OPEN_MAX
-#  define OPEN_MAX 10240
-#endif 
-
-typedef struct s_list
+char	*ft_strdup(const char *s1)
 {
-	char			*str;
-	struct s_list	*next;
-}	t_list;
+	int		idx;
+	char	*result;
 
-// char *get_next_line(int fd);
-
-#endif
+	idx = 0;
+	while (s1[idx])
+		idx++;
+	result = malloc(sizeof(char) * (idx + 1));
+	if (!(result))
+		return (NULL);
+	idx = 0;
+	while (s1[idx])
+	{
+		result[idx] = s1[idx];
+		idx++;
+	}
+	result[idx] = '\0';
+	return (result);
+}
