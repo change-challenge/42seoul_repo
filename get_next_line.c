@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/21 14:06:05 by hchang           ###   ########.fr       */
+/*   Updated: 2022/03/22 20:52:39 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,23 @@ void println(t_list *gnlst)
 
 char *get_next_line(int fd)
 {
-	static char	*back_up;
+	static char	*s_backup;
 	char		tmp[BUFFER_SIZE + 1];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	
+	// 첫 시작일 경우 
+	
 
 
 
-	while (ft_strchr(tmp, '\n'))
-	{
-		read(fd, tmp, BUFFER_SIZE);
 
-	}
+
+
+
+
+
 	return (NULL);
 }
 
