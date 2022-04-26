@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/26 13:38:48 by hchang           ###   ########.fr       */
+/*   Updated: 2022/04/26 20:05:23 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,10 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+
 	while (read(fd, tmp, BUFFER_SIZE) > 0)
-	{
-		printf("this is it! : %s\n", tmp);
+	{		
+		printf("this is it! : %s\n", tmp);	
 	}
 	return (NULL);
 }
