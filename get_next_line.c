@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/03/22 20:52:39 by hchang           ###   ########.fr       */
+/*   Updated: 2022/04/26 13:38:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void println(t_list *gnlst)
 	}
 }
 
+#include <stdio.h>
 char *get_next_line(int fd)
 {
 	static char	*s_backup;
@@ -93,77 +94,29 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	
-	// 첫 시작일 경우 
-	
-
-
-
-
-
-
-
-
-
+	while (read(fd, tmp, BUFFER_SIZE) > 0)
+	{
+		printf("this is it! : %s\n", tmp);
+	}
 	return (NULL);
 }
 
-// TO-DO: 
-
-int main(void)
+int	main(void)
 {
-	int fd;
-	char line[BUFFER_SIZE + 1];
+	int		fd;
+	char	*line;
 
 	fd = open("test.txt", O_RDONLY);
-	get_next_line(fd);
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s\n", line);
+		free(line);
+	}
+	printf("%s\n", line);
+	free(line);
+	close(fd);
 	return (0);
 }
 
-// int	main(void)
-// {
-// 	int		temp;
-// 	int		fd;
-// 	char	*line;
-
-// 	fd = open("test.txt", O_RDONLY);
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("%s\n", line);
-// 		free(line);
-// 	}
-// 	printf("%s\n", line);
-// 	free(line);
-// 	close(fd);
-// 	return (0);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TO-DO
-// 1. 금요일 지원금 언제 들어오는 지 
-// 2. 42서울 애플 할인 되는 지
+// first of all, it can read lines.
+// what we have to do is "filtering"
