@@ -6,7 +6,7 @@
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/27 20:50:32 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/04/27 23:52:02 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,29 +121,27 @@ t_list	*ft_lstnew_str(char *content)
 #include <stdio.h>
 char *get_next_line(int fd)
 {
-	static char *s_back;
+	static char s_back[OPEN_MAX];
 	t_list 		*lst;
 	ssize_t		rd;
 	size_t		line_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	s_back = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	*rd = read(fd, s_back, BUFFER_SIZE);
-	if (*rd <= 0)
-	{
-		free(s_back);
-		return (NULL);
-	}
-	s_back[*rd] = '\0';
-
+	// lst를 initialize 하기 
 	if (*s_back)
-	{
-		while (s_back[len])
-			len++;
-		*lst->str = malloc()
-	}
+		lst = ft_lstnew_str(s_back);
+	
 
+
+	// s_back이 있을 경우를 만들기
+	// 
+	
+	
+	
+	
+	
+	
 	
 
 
