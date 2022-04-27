@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/26 20:05:23 by hchang           ###   ########.fr       */
+/*   Updated: 2022/04/27 20:50:32 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,19 +86,75 @@ void println(t_list *gnlst)
 	}
 }
 
+
+t_list	*ft_lstadd_back_last(t_list **lst, t_list *new)
+{
+	t_list	*tmp;
+
+	if (!lst || !new)
+		return (NULL);
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	return (new);
+}
+
+t_list	*ft_lstnew_str(char *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
+
 #include <stdio.h>
 char *get_next_line(int fd)
 {
-	static char	*s_backup;
-	char		tmp[BUFFER_SIZE + 1];
+	static char *s_back;
+	t_list 		*lst;
+	ssize_t		rd;
+	size_t		line_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-
-	while (read(fd, tmp, BUFFER_SIZE) > 0)
-	{		
-		printf("this is it! : %s\n", tmp);	
+	s_back = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	*rd = read(fd, s_back, BUFFER_SIZE);
+	if (*rd <= 0)
+	{
+		free(s_back);
+		return (NULL);
 	}
+	s_back[*rd] = '\0';
+
+	if (*s_back)
+	{
+		while (s_back[len])
+			len++;
+		*lst->str = malloc()
+	}
+
+	
+
+
+
+
+
+
+
+
+
+
 	return (NULL);
 }
 
