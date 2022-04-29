@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/27 23:52:02 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/04/29 17:59:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,145 +15,90 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-// char *make_str(size_t full_len, t_list* gnlst)
-// {
-// 	char *str;
-
-// 	str = (char *)malloc(sizeof(char) * (full_len + 1));
-// 	while (gnlst->next !=  NULL && full_len--)
-// 	{
-// 		while (*gnlst->str)
-// 			*str++ = *gnlst->str++;
-// 		gnlst = gnlst->next;
-// 	}
-// 	return (str);
-// }
-
-// void	put_str(char *gnl_str, char *tmp)
-// {
-// 	while (*tmp)
-// 		*gnl_str++ = *tmp++;
-// }
-
-int	lstadd_front(t_list *gnlst, char *tmp, char *back_up)
+size_t	ft_strlen(const char *s)
 {
-	int	len;
-	int s_len;
+	unsigned int	cnt;
 
-	len = 0;
-	while (*tmp != '\0' || *tmp != '\n')
-		len++;
-	s_len = BUFFER_SIZE - len;
-	while (!(gnlst->next == NULL))
-		gnlst = gnlst->next;
-	gnlst->str = (char*)malloc(sizeof(char) * (len + 1));
-	if (gnlst->str == NULL)
-		return (0);
-	while (len--)
-		*gnlst->str++ = *tmp++;
-	if (s_len)
-	{
-		while (s_len--)
-			*back_up++ = *tmp++;
-	}
-	return (len);
+	cnt = 0;
+	while (s[cnt])
+		cnt++;
+	return (cnt);
 }
 
-int	ft_strchr(const char *str, int c)
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int	idx;
+	size_t	idx;
+	size_t	src_len;
 
 	idx = 0;
-	while (str[idx])
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize != 0)
+	{
+		while (idx < (dstsize - 1) && src[idx])
+		{
+			dst[idx] = src[idx];
+			idx++;
+		}
+		dst[idx] = '\0';
+	}
+	return (src_len);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	idx;
+	int	s_len;
+
+	idx = 0;
+	s_len = ft_strlen(s);
+	if (c == '\0' || s == NULL)
+		return ((char *)s + s_len);
+	while (s[idx])
+	{
+		if (s[idx] == (unsigned char)c)
+			return ((char *)s + idx);
 		idx++;
-	if (str == NULL)
-		return (FAIL);
-	while (str[idx])
-	{
-		if (str[idx] == (unsigned char)c)
-			return (FAIL);
-		idx++;
 	}
-	return (SUCCESS);
+	return (0);
 }
 
-void println(t_list *gnlst)
+char *first_move(char *res, char *s_back)
 {
-	while (gnlst->next)
-	{
-		printf("%s\n", gnlst->str);
-		gnlst = gnlst->next;
-	}
-}
-
-
-t_list	*ft_lstadd_back_last(t_list **lst, t_list *new)
-{
-	t_list	*tmp;
-
-	if (!lst || !new)
+	res = malloc(sizeof(s_back) + 1);
+	if (res == NULL)
 		return (NULL);
-	if (!*lst)
-		*lst = new;
-	else
-	{
-		tmp = *lst;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-	return (new);
+	ft_strlcpy(res, s_back, ft_strlen(s_back));
+	res[ft_strlen(s_back)] = 0;
+	free(res);
+	
+	return (res);
 }
 
-t_list	*ft_lstnew_str(char *content)
+
+char *make_line(char *res, char **s_back, int fd)
 {
-	t_list	*new;
+	char *tmp;
 
-	new = malloc(sizeof(t_list));
-	if (!new)
+	tmp = malloc(sizeof(BUFFER_SIZE));
+	if (tmp == NULL)
 		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
 }
-
 
 #include <stdio.h>
 char *get_next_line(int fd)
 {
-	static char s_back[OPEN_MAX];
-	t_list 		*lst;
-	ssize_t		rd;
-	size_t		line_len;
+	static char *s_back;
+	char 		*res;
+	ssize_t		rread;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	// lst를 initialize 하기 
-	if (*s_back)
-		lst = ft_lstnew_str(s_back);
-	
-
-
-	// s_back이 있을 경우를 만들기
-	// 
-	
-	
-	
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-	return (NULL);
+	if (*s_back || !ft_strchr(s_back, '\n'))
+		res = first_move(res, s_back);
+	return (make_line(res, &s_back, fd));
 }
 
 int	main(void)
