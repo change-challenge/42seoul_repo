@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/29 17:57:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/04 18:55:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@
 #  define OPEN_MAX 10240
 #endif 
 
+typedef struct s_list
+{
+	char			*content;
+	struct s_list	*next;
+}	t_list;
 
 // char *get_next_line(int fd);
 

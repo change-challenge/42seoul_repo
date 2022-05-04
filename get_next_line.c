@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/04/29 17:59:32 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/04 21:42:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,37 @@
 // 삭제할 헤더
 #include <stdio.h>
 #include <fcntl.h>
+
+t_list	*ft_lstadd_back_last(t_list **lst, t_list *new)
+{
+	t_list	*tmp;
+
+	if (!lst || !new)
+		return (NULL);
+	if (!*lst)
+		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	return (new);
+}
+
+t_list	*ft_lstnew_str(char *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
+
 
 size_t	ft_strlen(const char *s)
 {
@@ -24,7 +55,6 @@ size_t	ft_strlen(const char *s)
 		cnt++;
 	return (cnt);
 }
-
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -65,41 +95,38 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char *first_move(char *res, char *s_back)
+
+
+
+void	check_static(char **s_back, char **res, size_t *len)
 {
-	res = malloc(sizeof(s_back) + 1);
-	if (res == NULL)
-		return (NULL);
-	ft_strlcpy(res, s_back, ft_strlen(s_back));
-	res[ft_strlen(s_back)] = 0;
-	free(res);
 	
-	return (res);
 }
 
 
-char *make_line(char *res, char **s_back, int fd)
-{
-	char *tmp;
 
-	tmp = malloc(sizeof(BUFFER_SIZE));
-	if (tmp == NULL)
-		return (NULL);
-}
 
 #include <stdio.h>
 char *get_next_line(int fd)
 {
 	static char *s_back;
 	char 		*res;
+	char		*tmp;
+	size_t		res_len;
 	ssize_t		rread;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (*s_back || !ft_strchr(s_back, '\n'))
-		res = first_move(res, s_back);
-	return (make_line(res, &s_back, fd));
+	if (*s_back)
+		check_static(&s_back, &res, &res_len);
+
+
+
 }
+
+
+
+
 
 int	main(void)
 {
