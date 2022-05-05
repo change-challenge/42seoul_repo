@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/04 21:42:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/05 12:37:22 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,40 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-
-
-
-void	check_static(char **s_back, char **res, size_t *len)
+static ssize_t	line_check_len(int fd, t_list **lst, size_t *len)
 {
-	
+	char			*pos;
+	char			*buf;
+	t_list			*tmp;
+	ssize_t			rd;
+	size_t			content_len;
+
+	// 일차적으로 할 것은 재귀문을 while로 바꾸는 것
+	if (*lst)
+	{
+		pos = ft_strlen_chr_init((*lst)->content, '\n', &content_len, 0);
+		if (pos)
+		{
+			*len += (pos - (*lst)->content) + 1;
+			return (0);
+		}
+		(*len) += content_len;
+	}
+	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	rd = read(fd, buf, BUFFER_SIZE);
+	if (rd <= 0)
+	{
+		free(buf);
+		return (NULL);
+	}
+	buf[rd] = '\0';
+	tmp = ft_lstadd_back_last(lst, ft_lstnew_str(buf))
+	if (tmp)
+		rd = line_check_len(fd, &tmp, len);
+
+
+	return (rd);
 }
-
-
-
 
 #include <stdio.h>
 char *get_next_line(int fd)
@@ -117,10 +141,7 @@ char *get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (*s_back)
-		check_static(&s_back, &res, &res_len);
-
-
+	rread = line_check_len(fd, &s_back, &res_len);
 
 }
 
