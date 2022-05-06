@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:44:03 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/01/20 20:17:30 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/06 16:38:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	while ((*lst)->next != NULL)
+	while ((*lst)->next)
 		*lst = (*lst)->next;
 	(*lst)->next = new;
 	*lst = tmp;
