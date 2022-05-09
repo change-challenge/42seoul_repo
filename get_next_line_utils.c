@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:27 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/06 18:09:52 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/09 13:15:46 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,60 @@ void	*ft_lstfclean(t_list **lst)
 	return (NULL);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strdup(const char *s1)
 {
-	size_t	idx;
-	size_t	src_len;
+	int		idx;
+	char	*result;
 
 	idx = 0;
-	src_len = 0;
-	while (src[src_len])
-		src_len++;
-	if (dstsize != 0)
+	while (s1[idx])
+		idx++;
+	result = malloc(sizeof(char) * (idx + 1));
+	if (!(result))
+		return (NULL);
+	idx = 0;
+	while (s1[idx])
 	{
-		while (idx < (dstsize - 1) && src[idx])
-		{
-			dst[idx] = src[idx];
-			idx++;
-		}
-		dst[idx] = '\0';
+		result[idx] = s1[idx];
+		idx++;
 	}
-	return (src_len);
+	result[idx] = '\0';
+	return (result);
 }
 
-size_t	*ft_strchr(const char *s, int c)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	idx;
+
+	idx = 0;
+	while (dst[dst_len])
+		dst_len++;
+	while (src[src_len])
+		src_len++;
+	if (dst_len + 1 > dstsize)
+		return (dstsize + src_len);
+	while ((dst_len + idx < dstsize - 1) && src[idx])
+	{
+		dst[dst_len + idx] = src[idx];
+		idx++;
+	}
+	dst[dst_len + idx] = '\0';
+	return (dst_len + src_len);
+}
+
+
+size_t	ft_strchr(const char *s, int c, size_t *len)
 {
 	int	idx;
 
 	idx = 0;
+	len = 0;
 	if (c == '\0' || s == NULL)
 		return (0);
+	while (s[*len])
+		(*len)++;
 	while (s[idx])
 	{
 		if (s[idx] == (unsigned char)c)

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/06 17:56:28 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/09 13:44:24 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,19 @@
 #include <fcntl.h>
 
 
-t_list*	read_line(int fd, t_list **t_back)
+t_list*	read_line(int fd, t_list **t_back, ssize_t *rd)
 {
-	ssize_t		rd;
 	char		*tmp;
 
 	tmp = (char *)malloc(BUFFER_SIZE + 1);
-	rd = read(fd, tmp, BUFFER_SIZE);
-	if (rd <= 0)
+	*rd = read(fd, tmp, BUFFER_SIZE);
+	if (*rd <= 0)
 	{
 		free(tmp);
 		return (NULL);
 	}
-	tmp[rd] = '\0';
-	return (ft_lstnew_add_back(&t_back, tmp));
+	tmp[*rd] = '\0';
+	return (ft_lstnew_add_back(t_back, tmp));
 }
 
 // #1 : I need read return value (ssize_t)
@@ -38,19 +37,49 @@ t_list*	read_line(int fd, t_list **t_back)
 size_t	check_line(int fd, t_list **t_back, size_t *res_len)
 {
 	ssize_t rd;
-	size_t	pos;
+	size_t	enter;
+	size_t	len;
 
 	while (1)
 	{
-		pos = ft_strchr(*t_back, '\n');
-		if (pos)
+		enter = ft_strchr((*t_back)->content, '\n', &len);
+		if (enter)
 		{
-			res_len += pos;
+			res_len += enter;
 			break;
 		}
-		res_len += BUFFER_SIZE;
+		res_len += len;
+		*t_back = read_line(fd, t_back, &rd);
 	}
+	return (rd);
+}
+
+char	*make_line(t_list **t_back, size_t res_len)
+{
+	char 	*res;
+	size_t	save_len;
+	t_list	*t_save;
+	t_list	*t_clean;
 	
+	t_clean = *t_back;
+	res = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	while (*t_back)
+	{
+		ft_strlcat(res, (*t_back)->content, res_len);
+		*t_back = (*t_back)->next;
+	}
+	res[BUFFER_SIZE] = '\0';
+	if (ft_strchr((*t_back)->content, '\n', 0))
+	{
+		t_save = malloc(sizeof(t_list));
+		if (t_save)
+			return (NULL);
+		t_save->content = ft_strdup((*t_back)->content + save_len);
+		t_save->next = NULL;
+		t_back = &t_save;
+	}
+	ft_lstfclean(&t_clean);
+	return (res);
 }
 
 char *get_next_line(int fd)
@@ -62,13 +91,9 @@ char *get_next_line(int fd)
 	res_len = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	rread = check_line(fd, &t_back, &res_len);
-
+	rread = (fd, &t_back, &res_len);
+	return (make_line(&t_back, res_len));
 }
-
-
-
-
 
 int	main(void)
 {
