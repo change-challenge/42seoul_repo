@@ -6,11 +6,12 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:27 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/09 13:15:46 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/10 18:14:40 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 void	*ft_lstfclean(t_list **lst)
 {
@@ -56,6 +57,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	idx;
 
 	idx = 0;
+	dst_len = 0;
+	src_len = 0;
 	while (dst[dst_len])
 		dst_len++;
 	while (src[src_len])
@@ -65,7 +68,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	while ((dst_len + idx < dstsize - 1) && src[idx])
 	{
 		dst[dst_len + idx] = src[idx];
-		idx++;
+		if (src[idx++] == '\n')
+			break;
 	}
 	dst[dst_len + idx] = '\0';
 	return (dst_len + src_len);
@@ -77,9 +81,6 @@ size_t	ft_strchr(const char *s, int c, size_t *len)
 	int	idx;
 
 	idx = 0;
-	len = 0;
-	if (c == '\0' || s == NULL)
-		return (0);
 	while (s[*len])
 		(*len)++;
 	while (s[idx])
@@ -103,7 +104,7 @@ t_list	*ft_lstnew_add_back(t_list **lst, void *content)
 	new->next = NULL;
 	if (!lst)
 		return (NULL);
-	if (!*lst)
+	if (*lst == NULL)
 		*lst = new;
 	else
 	{
@@ -112,5 +113,17 @@ t_list	*ft_lstnew_add_back(t_list **lst, void *content)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
+	return (new);
+}
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list *new;
+
+	new = (t_list *)malloc(sizeof(t_list));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
 	return (new);
 }
