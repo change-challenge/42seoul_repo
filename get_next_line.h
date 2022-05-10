@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/10 18:02:49 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/10 21:40:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#  define FAIL 0
-#  define SUCCESS 1
-#  define BUFFER_SIZE 4
 #ifndef OPEN_MAX
 #  define OPEN_MAX 10240
 #endif 

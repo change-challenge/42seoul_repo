@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:27 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/10 18:14:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/10 22:24:54 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ size_t	ft_strchr(const char *s, int c, size_t *len)
 	while (s[idx])
 	{
 		if (s[idx] == (unsigned char)c)
-			return (idx);
+			return (idx + 1);
 		idx++;
 	}
 	return (0);
