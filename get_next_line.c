@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/10 22:36:19 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/11 10:46:06 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,21 @@ size_t	check_line(int fd, t_list **t_back, size_t *res_len)
 		if (curr)
 		{
 			enter = ft_strchr((curr)->content, '\n', &len);
+			// 문제는 리턴에서 
+			// '\n'값과 EOF를 구분해야한다. 
+			// '\n'에는 거기까지의 enter를 더해야하고,
+			// EOF는 마지막까지의 길이를 더해야한다. 
+			// 1. 구분하는 기준과 2. 더하는 것의 분리가 필요.
 			if (enter)
 			{
-				*res_len += enter - 1;
-				break;
-			}
-			else if (len < BUFFER_SIZE)
-			{
-				*res_len += len;
-				break;
+				*res_len += enter;
+				return (rd);
 			}
 			*res_len += len;
 		}
 		curr = read_line(fd, t_back, &rd);
-		if (rd < BUFFER_SIZE || curr == 0)
-		{
-			enter = ft_strchr((curr)->content, '\n', &len);
-			break;
-		}
+		if (!curr)
+			return (rd);
 	}
 	return (rd);
 }
@@ -81,7 +78,7 @@ char	*make_line(t_list **t_back, size_t res_len, char* res)
 	tmp = 0;
 	while (*t_back)
 	{
-		ft_strlcat(res, (*t_back)->content, res_len + 1);
+		ft_strlcat(res, (*t_back)->content, res_len);
 		if ((*t_back)->next == NULL)
 			s_save = (*t_back)->content;
 		*t_back = (*t_back)->next;
@@ -112,6 +109,8 @@ char *get_next_line(int fd)
 	result[res_len] = '\0';
 	return (make_line(&t_back, res_len, result));
 }
+
+#include <stdio.h>
 
 int	main()
 {
