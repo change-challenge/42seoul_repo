@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/10 21:40:32 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/12 15:20:53 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_list*	read_line(int fd, t_list **t_back, ssize_t *rd);
 void	*ft_lstfclean(t_list **lst);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat_2(char *dst, char const *src, size_t dstsize);
 size_t	ft_strchr(const char *s, int c, size_t *len);
 t_list	*ft_lstnew_add_back(t_list **lst, void *content);
 t_list	*ft_lstnew(void *content);

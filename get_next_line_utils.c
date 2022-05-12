@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:27 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/11 10:45:32 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/12 18:32:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,29 @@ char	*ft_strdup(const char *s1)
 	return (result);
 }
 
+size_t	ft_strlcat_2(char *dst, char const *src, size_t dstsize)
+{
+	size_t	src_len;
+	size_t	dst_len;
+
+	dst_len = 0;
+	src_len = 0;
+	while (dst[dst_len])
+		dst_len++;
+	while (src[src_len])
+		src_len++;
+	if (dst_len + 1 > dstsize)
+		return (src_len + dstsize);
+	if (dst_len + src_len + 1 < dstsize)
+		dstsize = src_len + dst_len + 1;
+	dst[dstsize - 1] = '\0';
+	while (dstsize-- - 1 > dst_len)
+		dst[dstsize - 1] = src[dstsize - dst_len - 1];
+	return (dst_len + src_len);
+}
+
+
+
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	dst_len;
@@ -89,7 +112,7 @@ size_t	ft_strchr(const char *s, int c, size_t *len)
 			return (idx);
 		idx++;
 	}
-	return (0);
+	return (-1);
 }
 
 t_list	*ft_lstnew_add_back(t_list **lst, void *content)

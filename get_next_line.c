@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/11 10:46:06 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/12 18:52:21 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ size_t	check_line(int fd, t_list **t_back, size_t *res_len)
 			// '\n'에는 거기까지의 enter를 더해야하고,
 			// EOF는 마지막까지의 길이를 더해야한다. 
 			// 1. 구분하는 기준과 2. 더하는 것의 분리가 필요.
-			if (enter)
-			{
-				*res_len += enter;
+			if (enter != (size_t)-1)			{
+				*res_len += (enter + 1);
 				return (rd);
 			}
 			*res_len += len;
@@ -74,19 +73,31 @@ char	*make_line(t_list **t_back, size_t res_len, char* res)
 	size_t	enter;
 	size_t	tmp;
 
+	// printf("========[t_back 리스트]=======\n");
+	// while ((*t_back)->next == NULL)
+	// 	printf("|%s|\n", (*t_back)->content);
+	// printf("=======================\n");
+
 	t_clean = *t_back;
 	tmp = 0;
+	res[0] = '\0';
 	while (*t_back)
 	{
-		ft_strlcat(res, (*t_back)->content, res_len);
+		ft_strlcat(res, (*t_back)->content, res_len + 1);
 		if ((*t_back)->next == NULL)
 			s_save = (*t_back)->content;
 		*t_back = (*t_back)->next;
 	}
-	enter = ft_strchr(s_save, '\n', &tmp);
-	if (enter && (enter != tmp - 1))
-		*t_back = ft_lstnew(ft_strdup(s_save + enter));
+	// printf("res : |%s|\n", res);
+	enter = ft_strchr(s_save, '\n', &tmp); // 마지막이라는 것을 확인? 어떤 식으로 ?
+	if ((enter != (size_t)-1) && *(s_save + 1) != '\0')
+		*t_back = ft_lstnew(ft_strdup(s_save + (enter + 1)));
 	ft_lstfclean(&t_clean);
+
+	// printf("========[출력 값]=======\n");
+	//printf("|%s|\n", res);
+	// printf("======================\n");
+
 	return (res);	
 }
 
@@ -110,24 +121,22 @@ char *get_next_line(int fd)
 	return (make_line(&t_back, res_len, result));
 }
 
-#include <stdio.h>
-
-int	main()
-{
-	int		fd;
-	char	*line;
-
-	fd = open("test.txt", O_RDONLY);
-	while ((line = (get_next_line(fd))))
-	{
-		if (line == NULL)
-			break;
-		printf("%s\n", line);
-		free(line);
-	}
-	printf("%s\n", line);
-	free(line);
-}
+// int	main()
+// {
+// 	int		fd;
+// 	char	*line;
+	
+// 	fd = open("test.txt", O_RDONLY);
+// 	while ((line = (get_next_line(fd))))
+// 	{
+// 		if (line == NULL)
+// 			break;
+// 		printf("%s\n", line);
+// 		free(line);
+// 	}
+// 	printf("%s\n", line);
+// 	free(line);
+// }
 
 // int	main(void)
 // {
