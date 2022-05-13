@@ -6,13 +6,13 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/13 10:16:07 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/13 10:36:41 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strchr(const char *s, int c, size_t *len)
+size_t	check_enter_len(const char *s, int c, size_t *len)
 {
 	int	idx;
 
@@ -26,6 +26,34 @@ size_t	ft_strchr(const char *s, int c, size_t *len)
 		idx++;
 	}
 	return (-1);
+}
+
+size_t	check_line(int fd, t_list **res_lst, size_t *res_len)
+{
+	t_list	*curr;
+	ssize_t	rd;
+	size_t	enter_pos;
+	size_t	content_len;
+
+	curr = *res_lst;
+	while (1)
+	{
+		content_len = 0;
+		if (curr)
+		{
+			enter_pos = check_enter_len((curr)->content, '\n', &content_len);
+			if (enter_pos != (size_t) - 1)
+			{
+				*res_len += (enter_pos + 1);
+				return (rd);
+			}
+			*res_len += content_len;
+		}
+		curr = read_line(fd, res_lst, &rd);
+		if (!curr)
+			return (rd);
+	}
+	return (rd);
 }
 
 t_list	*read_line(int fd, t_list **t_back, ssize_t *rd)
@@ -43,74 +71,46 @@ t_list	*read_line(int fd, t_list **t_back, ssize_t *rd)
 	return (ft_lstnew_add_back(t_back, tmp));
 }
 
-size_t	check_line(int fd, t_list **t_back, size_t *res_len)
+char	*make_line(t_list **res_lst, size_t res_len, char *res)
 {
-	ssize_t	rd;
-	size_t	enter;
-	size_t	len;
-	t_list	*curr;
-
-	curr = *t_back;
-	while (1)
-	{
-		len = 0;
-		if (curr)
-		{
-			enter = ft_strchr((curr)->content, '\n', &len);
-			if (enter != (size_t) - 1)
-			{
-				*res_len += (enter + 1);
-				return (rd);
-			}
-			*res_len += len;
-		}
-		curr = read_line(fd, t_back, &rd);
-		if (!curr)
-			return (rd);
-	}
-	return (rd);
-}
-
-char	*make_line(t_list **t_back, size_t res_len, char *res)
-{
-	char	*s_save;
-	t_list	*t_clean;
-	size_t	enter;
 	size_t	tmp;
+	char	*save;
+	size_t	enter_pos;
+	t_list	*clean_lst;
 
-	t_clean = *t_back;
 	tmp = 0;
-	res[0] = '\0';
-	while (*t_back)
+	res[0] = 0;
+	clean_lst = *res_lst;
+	while (*res_lst)
 	{
-		ft_strlcat(res, (*t_back)->content, res_len + 1);
-		if ((*t_back)->next == NULL)
-			s_save = (*t_back)->content;
-		*t_back = (*t_back)->next;
+		ft_strlcat(res, (*res_lst)->content, res_len + 1);
+		if ((*res_lst)->next == NULL)
+			save = (*res_lst)->content;
+		*res_lst = (*res_lst)->next;
 	}
-	enter = ft_strchr(s_save, '\n', &tmp);
-	if ((enter != (size_t)-1) && *(s_save + enter + 1) != '\0')
-		*t_back = ft_lstnew(ft_strdup(s_save + (enter + 1)));
-	ft_lstfclean(&t_clean);
+	enter_pos = check_enter_len(save, '\n', &tmp);
+	if ((enter_pos != (size_t)-1) && *(save + enter_pos + 1) != '\0')
+		*res_lst = ft_lstnew(ft_strdup(save + (enter_pos + 1)));
+	ft_lstfclean(&clean_lst);
 	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	char			*result;
-	static t_list	*t_back[FD_MAX];
+	char			*res;
+	static t_list	*res_lst[FD_MAX];
 	size_t			res_len;
-	ssize_t			rread;
+	ssize_t			rd;
 
 	res_len = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || FD_MAX <= 0 || fd >= FD_MAX)
 		return (NULL);
-	rread = check_line(fd, &t_back[fd], &res_len);
-	if ((!rread && !res_len) || rread == -1)
-		return ((char *)ft_lstfclean(&t_back[fd]));
-	result = (char *)malloc(sizeof(char) * (res_len + 1));
-	if (!result)
+	rd = check_line(fd, &res_lst[fd], &res_len);
+	if ((!rd && !res_len) || rd == -1)
+		return ((char *)ft_lstfclean(&res_lst[fd]));
+	res = (char *)malloc(sizeof(char) * (res_len + 1));
+	if (!res)
 		return (NULL);
-	result[res_len] = '\0';
-	return (make_line(&t_back[fd], res_len, result));
+	res[res_len] = '\0';
+	return (make_line(&res_lst[fd], res_len, res));
 }
