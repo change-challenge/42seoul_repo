@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/13 10:20:07 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/13 10:16:07 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strchr(const char *s, int c, size_t *len)
 {
@@ -98,19 +98,19 @@ char	*make_line(t_list **t_back, size_t res_len, char *res)
 char	*get_next_line(int fd)
 {
 	char			*result;
-	static t_list	*t_back;
+	static t_list	*t_back[FD_MAX];
 	size_t			res_len;
 	ssize_t			rread;
 
 	res_len = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || FD_MAX <= 0 || fd >= FD_MAX)
 		return (NULL);
-	rread = check_line(fd, &t_back, &res_len);
+	rread = check_line(fd, &t_back[fd], &res_len);
 	if ((!rread && !res_len) || rread == -1)
-		return ((char *)ft_lstfclean(&t_back));
+		return ((char *)ft_lstfclean(&t_back[fd]));
 	result = (char *)malloc(sizeof(char) * (res_len + 1));
 	if (!result)
 		return (NULL);
 	result[res_len] = '\0';
-	return (make_line(&t_back, res_len, result));
+	return (make_line(&t_back[fd], res_len, result));
 }
