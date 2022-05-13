@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 21:20:19 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/13 10:37:03 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/13 17:42:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 }	t_list;
 
 char	*get_next_line(int fd);
-char	*make_line(t_list **t_back, size_t res_len, char *res);
+char	*make_line(t_list **res_lst, size_t res_len);
 size_t	check_line(int fd, t_list **t_back, size_t *res_len);
 t_list	*read_line(int fd, t_list **t_back, ssize_t *rd);
 void	*ft_lstfclean(t_list **lst);
