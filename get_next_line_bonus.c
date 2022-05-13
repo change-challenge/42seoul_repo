@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/13 10:36:41 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/13 11:50:20 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_list	*read_line(int fd, t_list **t_back, ssize_t *rd)
 	if (*rd <= 0)
 	{
 		free(tmp);
+		tmp = NULL;
 		return (NULL);
 	}
 	tmp[*rd] = '\0';
