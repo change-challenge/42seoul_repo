@@ -29,11 +29,11 @@ int parsing(char ***strs, char **argv)
     return (ret);
 }
 
-int check_sign(char c, int *sign)
+int check_sign(char c, char next_c, int *sign)
 {
-    if (c == '+')
+    if (c == '+' && ft_isdigit(next_c))
         return (1);
-    else if (c == '-')
+    else if (c == '-' && ft_isdigit(next_c))
     {
         *sign = -1;
         return (1);
@@ -46,43 +46,55 @@ void    ft_error(char **strs)
 {
     ft_free(strs);
     ft_putendl_fd("Error");
-    exit (0);
+    exit (1);
 }
 
-void    is_int(char **strs)
+int	is_dup(int *arr, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < i)
+	{
+		if (arr[i] == arr[j])
+		{
+			free (arr);
+			return (1);
+		}
+		j++;
+	}
+	return (0);
+}
+
+int	*ft_adtoi(char **strs, int ac)
 {
     int         i;
     int         j;
     long long   num;
     int         sign;
+	int			*arr;
 
+	arr = ft_calloc(1, sizeof(int) * ac);
     sign = 1;
     i = 0;
     while(strs[i])
     {
+		num = 0;
         j = 0;
-        j += check_sign(strs[i][j], &sign);
+        j += check_sign(strs[i][j], strs[i][j + 1], &sign);
         while (strs[i][j])
         {
-            if (!(strs[i][j] >= '0' && strs <= '9'))
+            if (!(strs[i][j] >= '0' && strs[i][j] <= '9'))
                 ft_error(strs);
             num += num * 10 + strs[i][j] - '0';
             j++;
         }
+		if ((num > INT_MAX && sign == 1) || (num > INT_MAX + 1 && sign == -1))
+        ft_error(strs);
+		arr[i] = sign * num;
+		if (is_dup(arr, i))
+			ft_error(strs);
         i++;
     }
-    if (num > INT_MAX || num < INT_MIN)
-        ft_error(strs);
-    return (sign * num);
-}
-
-int is_valid(char **strs, int ac)
-{
-    int *arr;
-
-    arr = malloc(sizeof(int) * ac);
-    if (!arr)
-        return (0);
-    is_int(**strs)
-    is_dup()
+    return (arr);
 }
