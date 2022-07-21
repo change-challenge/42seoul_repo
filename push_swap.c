@@ -1,18 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 17:10:55 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/20 17:26:52 by sesim            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
+#include <stdlib.h>
 
-int	main(int ac, char **av)
+void ft_free(char **strs)
 {
-	t_node
+    int i;
+
+    i = 0;
+    while (strs[i])
+        free (strs[i++]);
+    free(strs);
+}
+
+int main(int argc, char **argv)
+{
+    char    **strs;
+    int     ac;
+
+    ac = parsing(&strs, argv + 1);
+    if (ac > 1)
+    {
+        if (!is_valid(strs, ac))
+        {
+            ft_putendl_fd("Error");
+            ft_free(strs);
+            exit(0);
+        }
+    }
 }
