@@ -95,7 +95,14 @@ int find_first(t_stack *stack, int flag)
 void    sort_5(t_stack *stack)
 {
     t_node *curr;
-    int zero = find_first(stack, 0);
+    int     idx;
     
     curr = stack->head;
+	idx = find_first(stack, 0);
+	if (idx <= 3)
+		while (--idx)
+			ra(stack);
+	else if (idx > 3)
+		while (idx++ < 6)
+			rra(stack);
 }
