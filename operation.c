@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:11 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/20 18:30:12 by sesim            ###   ########.fr       */
+/*   Updated: 2022/07/21 10:47:48 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	push_tail(t_stack stack_a, int num)
 
 void	push_head(t_stack *stack, t_node *node)
 {
-	
+
 	node->next = stack->head;
 	stack->head = node;
 }
@@ -52,7 +52,10 @@ void	push_tail(t_stack *stack, t_node *node)
 
 	curr = stack->head;
 	if (curr == 0)
+	{
 		stack->head = node;
+		return ;
+	}
 	while (curr->next != 0)
 		curr = curr->next;
 	curr->next = node;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/21 08:19:48 by sesim            ###   ########.fr       */
+/*   Updated: 2022/07/21 10:43:09 by jinypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_node
 {
 	int				val;
+	int				idx;
 	struct s_node	*next;
 }	t_node;
 
@@ -46,5 +47,6 @@ void	rr(t_info info);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_info info);
+void    put_value(int *arr, t_stack *stack_a, int ac);
 
 #endif
