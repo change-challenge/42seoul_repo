@@ -7,6 +7,7 @@ void    put_value(int *arr, t_stack *stack_a, int ac)
     t_node  *node;
 
     i = 0;
+    stack_a->size = ac;
     while(i < ac)
     {
         node = calloc(1, sizeof(t_node)); //libft 사용해야함.

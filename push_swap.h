@@ -6,12 +6,15 @@
 /*   By: hankyuhong <hankyuhong@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/21 13:17:24 by hankyuhong       ###   ########.fr       */
+/*   Updated: 2022/07/21 14:30:31 by hankyuhong       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+#include <stdio.h>
+#include <limits.h>
 
 typedef struct s_node
 {
@@ -24,6 +27,7 @@ typedef struct s_stack
 {
 	t_node	*head;
 	t_node	*tail;
+	int		size;
 }	t_stack;
 
 typedef struct s_info
@@ -50,7 +54,11 @@ void	rrr(t_info info);
 void    put_value(int *arr, t_stack *stack_a, int ac);
 void    indexing(int *arr, t_stack *stack, int ac);
 void    sort_3(t_stack *stack);
-int is_sorted(t_stack *stack);
-
+int 	is_sorted(t_stack *stack);
+void    sort_5(t_info info);
+void	sort_4(t_info info);
+int 	min_num(t_stack *stack);
+int 	max_num(t_stack *stack);
+int 	find_first(t_stack *stack, int flag);
 
 #endif

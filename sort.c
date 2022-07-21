@@ -1,51 +1,5 @@
 #include "push_swap.h"
 
-static int min_num(t_stack *stack)
-{
-    t_node  *curr;
-    int     tmp;
-
-    curr = stack->head;
-    tmp = curr->idx;
-    while (curr->next)
-    {
-        if (tmp > curr->next->idx)
-            tmp = curr->next->idx;
-        curr = curr->next;
-    }
-    return (tmp);
-}
-
-static int max_num(t_stack *stack)
-{
-    t_node  *curr;
-    int     tmp;
-
-    curr = stack->head;
-    tmp = curr->idx;
-    while (curr->next)
-    {
-        if (tmp < curr->next->idx)
-            tmp = curr->next->idx;
-        curr = curr->next;
-    }
-    return (tmp);
-}
-
-int is_sorted(t_stack *stack)
-{
-    t_node *curr;
-
-    curr = stack->head;
-    while (curr->next)
-    {
-        if (curr->idx > curr->next->idx)
-            return (0);
-        curr = curr->next;
-    }
-    return (1);
-}
-
 void    sort_3(t_stack *stack)
 {
     t_node *curr;
@@ -75,34 +29,66 @@ void    sort_3(t_stack *stack)
     }
 }
 
-int find_first(t_stack *stack, int flag)
-{
-    t_node *curr;
-    int i;
-
-    i = 1;
-    curr = stack->head;
-    while (curr)
-    {
-        if (curr->idx == flag)
-            break ;
-        curr = curr->next;
-        i++;
-    }
-    return (i);
-}
-
-void    sort_5(t_stack *stack)
+void    sort_5(t_info info)
 {
     t_node *curr;
     int     idx;
     
-    curr = stack->head;
-	idx = find_first(stack, 0);
-	if (idx <= 3)
-		while (--idx)
-			ra(stack);
-	else if (idx > 3)
-		while (idx++ < 6)
-			rra(stack);
+    curr = info.stack_a->head;
+	idx = find_first(info.stack_a, 0);
+	while (idx <= 3 && --idx)
+		ra(info.stack_a);
+	while (idx > 3 && idx < 6 && idx++)
+		rra(info.stack_a);
+	pb(info);
+	idx = find_first(info.stack_a, 1);
+	if (idx == 2)
+		sa(info.stack_a);
+	while (idx > 2 && idx < 5 && idx++)
+		rra(info.stack_a);
+	pb(info);
+	sort_3(info.stack_a);
+	pa(info);
+	pa(info);
+}
+
+void	sort_4(t_info info)
+{
+	t_node *curr;
+    int     idx;
+    
+    curr = info.stack_a->head;
+	idx = find_first(info.stack_a, 0);
+	while (idx <= 2 && --idx)
+		ra(info.stack_a);
+	while (idx > 2 && idx < 5 && idx++)
+		rra(info.stack_a);
+	pb(info);
+	sort_3(info.stack_a);
+	pa(info);
+}
+
+void	hour_glass(t_info info)
+{
+	int	chunk;
+	int	x;
+
+	x = info.stack_a->size;
+	chunk = 0.000000053 * (x * x) + 0.03 * x + 14.5;
+	a_to_b(info, chunk);
+	b_to_a(info);
+}
+
+void	sort(t_info info)
+{
+	if (info.stack_a->size == 2)
+		sa(info.stack_a);
+	else if (info.stack_a->size == 3)
+		sort_3(info.stack_a);	
+	else if (info.stack_a->size == 4)
+		sort_4(info);
+	else if (info.stack_a->size == 5)
+		sort_5(info);
+	else
+		hour_glass()
 }
