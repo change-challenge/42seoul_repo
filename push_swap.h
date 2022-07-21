@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hankyuhong <hankyuhong@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/21 10:43:09 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/07/21 13:17:24 by hankyuhong       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_info info);
 void    put_value(int *arr, t_stack *stack_a, int ac);
+void    indexing(int *arr, t_stack *stack, int ac);
+void    sort_3(t_stack *stack);
+int is_sorted(t_stack *stack);
+
 
 #endif

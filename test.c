@@ -8,7 +8,7 @@ int main(int ac, char **av)
 		printf("av : %s\n", av[1]);
 	t_info info;
 	t_node *node;
-	int arr[1000] = {1,2,3,4,5,6,7,8,9,10};
+	int arr[3] = {4,6,1};
 //	bzero(&info, sizeof(t_info));
 
 	info.stack_a = calloc(1, sizeof(t_stack));
@@ -25,13 +25,20 @@ int main(int ac, char **av)
 // 		i++;
 // 	}
 
-	put_value(arr, info.stack_a, 1000);
+	put_value(arr, info.stack_a, 3);
 
 	t_node *curr;
 	curr = info.stack_a->head;
+	indexing(arr, info.stack_a, 3);
+
+	if (is_sorted(info.stack_a))
+		return (0);
+	sort_3(info.stack_a);
+	curr = info.stack_a->head;
 	while(curr)
 	{
-		printf("val : %d\n", curr->val);
+		printf("value : %d\n", curr->val);
+		printf("idx : %d\n", curr->idx);
 		curr = curr->next;
 	}
 
