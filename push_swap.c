@@ -55,10 +55,13 @@ int main(int argc, char **argv)
     ac = parsing(&strs, argv + 1);
     if (ac > 1)
     {
+		info.stack_a = calloc(1, sizeof(t_stack));
+		info.stack_b = calloc(1, sizeof(t_stack));
         arr = ft_adtoi(strs, ac);
         put_value(arr, info.stack_a, ac);
+		indexing(arr, info.stack_a, ac);
         free(arr);
-        if (is_sorted(info.stack_a))
+		if (is_sorted(info.stack_a) == 1)
             return (0);
         sort(info);
     }

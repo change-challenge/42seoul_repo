@@ -24,7 +24,7 @@ int parsing(char ***strs, char **argv)
     }
     *strs = ft_split(line, ' ');
     free(line);
-    while (*strs[ret])
+    while ((*strs)[ret])
 		ret++;
     return (ret);
 }
@@ -89,7 +89,7 @@ int	*ft_adtoi(char **strs, int ac)
             num += num * 10 + strs[i][j] - '0';
             j++;
         }
-		if ((num > INT_MAX && sign == 1) || (sign == -1 && num * sign > INT_MIN))
+		if ((num > INT_MAX && sign == 1) || (sign == -1 && num * sign < INT_MIN))
 			ft_error(strs);
 		arr[i] = sign * num;
 		if (is_dup(arr, i))
