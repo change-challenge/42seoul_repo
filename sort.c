@@ -31,10 +31,8 @@ void    sort_3(t_stack *stack)
 
 void    sort_5(t_info info)
 {
-    t_node *curr;
     int     idx;
     
-    curr = info.stack_a->head;
 	idx = find_first(info.stack_a, 0);
 	while (idx <= 3 && --idx)
 		ra(info.stack_a);
@@ -54,10 +52,8 @@ void    sort_5(t_info info)
 
 void	sort_4(t_info info)
 {
-	t_node *curr;
     int     idx;
     
-    curr = info.stack_a->head;
 	idx = find_first(info.stack_a, 0);
 	while (idx <= 2 && --idx)
 		ra(info.stack_a);

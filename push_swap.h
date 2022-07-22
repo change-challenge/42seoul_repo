@@ -6,14 +6,14 @@
 /*   By: hankyuhong <hankyuhong@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/22 13:03:12 by hankyuhong       ###   ########.fr       */
+/*   Updated: 2022/07/22 13:19:26 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft/libft.h"
+#include "./libft/libft.h"
 #include <stdio.h>
 #include <limits.h>
 
@@ -66,5 +66,7 @@ void    a_to_b(t_info info, int chunk);
 void    sort_b(t_stack *stack);
 void    b_to_a(t_info info);
 void	ft_free(char **strs);
+int parsing(char ***strs, char **argv);
+int	*ft_adtoi(char **strs, int ac);
 
 #endif

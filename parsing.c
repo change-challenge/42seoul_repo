@@ -22,10 +22,10 @@ int parsing(char ***strs, char **argv)
             free(tmp);
         }
     }
-    *strs = ft_split(line, " ");
+    *strs = ft_split(line, ' ');
     free(line);
-    while (**strs)
-        *strs[ret++];
+    while (*strs[ret])
+		ret++;
     return (ret);
 }
 
@@ -89,8 +89,8 @@ int	*ft_adtoi(char **strs, int ac)
             num += num * 10 + strs[i][j] - '0';
             j++;
         }
-		if ((num > INT_MAX && sign == 1) || (num > INT_MAX + 1 && sign == -1))
-        ft_error(strs);
+		if ((num > INT_MAX && sign == 1) || (sign == -1 && num * sign > INT_MIN))
+			ft_error(strs);
 		arr[i] = sign * num;
 		if (is_dup(arr, i))
 			ft_error(strs);
