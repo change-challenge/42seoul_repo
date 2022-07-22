@@ -45,7 +45,7 @@ int check_sign(char c, char next_c, int *sign)
 void    ft_error(char **strs)
 {
     ft_free(strs);
-    ft_putendl_fd("Error");
+    ft_putendl_fd("Error", 2);
     exit (1);
 }
 

@@ -27,19 +27,40 @@ void ft_free(char **strs)
     free(strs);
 }
 
-// int main(int argc, char **argv)
-// {
-//     char    **strs;
-//     int     ac;
+void    struct_free(t_info info)
+{
+    t_node  *curr;
+    t_node  *tmp;
 
-//     ac = parsing(&strs, argv + 1);
-//     if (ac > 1)
-//     {
-//         if (!is_valid(strs, ac))
-//         {
-//             ft_putendl_fd("Error");
-//             ft_free(strs);
-//             exit(0);
-//         }
-//     }
-// }
+    curr = info.stack_a->head;
+    while (curr)
+    {
+        tmp = curr;
+        curr = curr->next;
+        tmp->val = 0;
+        tmp->idx = 0;
+        free(tmp);
+    }
+}
+
+int main(int argc, char **argv)
+{
+    char    **strs;
+    int     ac;
+    int     *arr;
+    t_info  info;
+    
+    if (argc < 2)
+        return (0);
+    ac = parsing(&strs, argv + 1);
+    if (ac > 1)
+    {
+        arr = ft_adtoi(strs, ac);
+        put_value(arr, info.stack_a, ac);
+        free(arr);
+        if (is_sorted(info.stack_a))
+            return (0);
+        sort(info);
+    }
+    ft_free(strs);
+}

@@ -6,13 +6,14 @@
 /*   By: hankyuhong <hankyuhong@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/21 14:30:31 by hankyuhong       ###   ########.fr       */
+/*   Updated: 2022/07/22 13:03:12 by hankyuhong       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include "libft/libft.h"
 #include <stdio.h>
 #include <limits.h>
 
@@ -60,5 +61,10 @@ void	sort_4(t_info info);
 int 	min_num(t_stack *stack);
 int 	max_num(t_stack *stack);
 int 	find_first(t_stack *stack, int flag);
+void	sort(t_info info);
+void    a_to_b(t_info info, int chunk);
+void    sort_b(t_stack *stack);
+void    b_to_a(t_info info);
+void	ft_free(char **strs);
 
 #endif

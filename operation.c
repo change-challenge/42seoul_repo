@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jinypark <jinypark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: hankyuhong <hankyuhong@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:11 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/21 10:47:48 by jinypark         ###   ########.fr       */
+/*   Updated: 2022/07/22 12:55:32 by hankyuhong       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	push_tail(t_stack stack_a, int num)
-{
-	t_node	*node;
-	t_node	*elem;
-
-	elem = ft_calloc(1, sizeof(t_node));
-	elem->val = num;
-	node = stack_a.top;
-	while (node != 0)
-		node = node->next;
-	node = elem;
-}
-*/
 
 void	push_head(t_stack *stack, t_node *node)
 {

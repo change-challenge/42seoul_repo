@@ -19,11 +19,29 @@ void    a_to_b(t_info info, int chunk)
     }
 }
 
+void    sort_b(t_stack *stack)
+{
+    t_node  *curr;
+    int i;
+
+    i = 0;
+    curr = stack->head;
+    while ((stack->size - 1) != curr->idx)
+    {
+        i++;
+		curr = curr->next;
+    }
+	while (i <= stack->size / 2 && i--)
+		rb(stack);
+	while (i > stack->size / 2 && i < stack->size && i++)
+		rrb(stack);
+}
+
 void    b_to_a(t_info info)
 {
     while (info.stack_b->size)
     {
-        if (info.stack_b->head->idx > info.stack_b->tail->idx)
+        sort_b(info.stack_b);
+		pa(info);
     }
-    
 }
