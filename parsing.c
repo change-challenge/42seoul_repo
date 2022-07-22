@@ -75,12 +75,12 @@ int	*ft_adtoi(char **strs, int ac)
 	int			*arr;
 
 	arr = ft_calloc(1, sizeof(int) * ac);
-    sign = 1;
     i = 0;
     while(strs[i])
     {
 		num = 0;
         j = 0;
+		sign = 1;
         j += check_sign(strs[i][j], strs[i][j + 1], &sign);
         while (strs[i][j])
         {
