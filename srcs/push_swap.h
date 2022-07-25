@@ -6,7 +6,7 @@
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 17:53:25 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/07/25 20:38:02 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-
-# define MAX 2147483647
-# define MIN -2147483648
+# include <limits.h>
 
 typedef struct s_node
 {

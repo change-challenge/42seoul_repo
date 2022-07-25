@@ -1,41 +1,66 @@
-NAME	      = push_swap
+NAME = push_swap
+BONUS_NAME = checker
 
-CC		= cc
-CFLAG	= -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-RM		= rm -f
+LIBFT = $(LIBFT_SRCS_DIR)libft.a
 
-AR		= ar
-ARFLAGS       = crs
+RM = rm -f
 
-SRCS = push_swap.c \
-	   command.c \
+AR = ar
+ARFLAGS = crs
 
+MAIN_SRCS_DIR = ./srcs
+BONUS_SRCS_DIR = ./checker
+GNL_SRCS_DIR = ./get_next_line
+LIBFT_SRCS_DIR = ./libft
 
-SRCS	= $(SRCS_1)			\
-	  $(SRCS_2)			\
+SRCS = $(MAIN_SRCS_DIR)push_swap.c \
+	   $(MAIN_SRCS_DIR)command_1.c \
+	   $(MAIN_SRCS_DIR)command_2.c \
+	   $(MAIN_SRCS_DIR)command_3.c \
+	   $(MAIN_SRCS_DIR)operation.c \
+	   $(MAIN_SRCS_DIR)parsing_1.c \
+	   $(MAIN_SRCS_DIR)parsing_2.c \
+	   $(MAIN_SRCS_DIR)sort.c \
+	   $(MAIN_SRCS_DIR)sort_mani.c \
+	   $(MAIN_SRCS_DIR)sort_utils.c \
+	   $(MAIN_SRCS_DIR)indexing.c
 
-OBJS	= $(SRCS:.c=.o)
+BONUS_SRCS = $(BONUS_SRCS_DIR)checker.c \
+			 $(BONUS_SRCS_DIR)command_1.c \
+			 $(BONUS_SRCS_DIR)command_2.c \
+			 $(BONUS_SRCS_DIR)command_3.c \
+			 $(BONUS_SRCS_DIR)parsing_1.c \
+			 $(BONUS_SRCS_DIR)parsing_2.c \
+			 $(BONUS_SRCS_DIR)indexing.c \
+			 $(BONUS_SRCS_DIR)operation.c
 
-OBJS_BONUS = $(SRCS_BN:.c=.o)
+GNL_SRCS = $(GNL_SRCS_DIR)get_next_line.c \
+		   $(GNL_SRCS_DIR)get_next_line_utils.c
+
+libft.a :
+	make -C ./libft
+	cp ./libft/libft.a ./
 
 all : $(NAME)
 
-%.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+bonus : $(BONUS_NAME)
 
 clean :
-	$(RM) $(RMFLAG) $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
-	$(RM) $(RMFLAG) $(NAME)
+	$(RM) $(NAME) $(BONUS_NAME)
 
 re : fclean all
 
-$(NAME) : $(OBJS)
-	$(AR) $(ARFLAGS) $@ $^
+$(NAME) : $(LIBFT) $(SRCS)
+	$(CC) $(CFLAGS) $^ -o $@
+	mv $(MAIN_SRCS_DIR)push_swap ./
 
-bonus : $(OBJS) $(OBJS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $^
+$(BONUS_NAME) : $(GNL_SRCS) $(LIBFT) $(BONUS_SRCS)
+	$(CC) $(CFLAGS) $^ -o $@
+	mv $(BONUS_SRCS_DIR)checekr ./
 
- .PHONY : all clean fclean re
+.PHONY : all clean fclean re

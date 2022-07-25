@@ -12,10 +12,10 @@ int	*init_arr(char **strs, int ac)
 
 int	*ft_adtoi(int i, char **strs, int ac)
 {
-	long long	num;
-	int			j;
-	int			sign;
-	int			*arr;
+	int	num;
+	int	j;
+	int	sign;
+	int	*arr;
 
 	arr = init_arr(strs, ac);
 	while (strs[i])
@@ -25,12 +25,12 @@ int	*ft_adtoi(int i, char **strs, int ac)
 		j = check_sign(strs[i][0], strs[i][1], &sign);
 		while (strs[i][j])
 		{
-			if (!(strs[i][j] >= '0' && strs[i][j] <= '9'))
+			num *= 10;
+			num += sign * (strs[i][j] - '0');
+			if (!ft_isdigit(strs[i][j++]) || (sign == 1 && num < 0) || \
+				(sign == -1 && num > 0))
 				ft_error(strs);
-			num += num * 10 + strs[i][j++] - '0';
 		}
-		if ((num > MAX && sign == 1) || (sign == -1 && num * sign < MIN))
-			ft_error(strs);
 		arr[i] = sign * num;
 		if (is_dup(arr, i++))
 			ft_error(strs);

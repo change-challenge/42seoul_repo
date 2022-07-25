@@ -43,17 +43,14 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	ac = parsing(&strs, argv + 1);
-	if (ac > 1)
-	{
-		info.stack_a = calloc(1, sizeof(t_stack));
-		info.stack_b = calloc(1, sizeof(t_stack));
-		arr = ft_adtoi(0, strs, ac);
-		put_value(arr, info.stack_a, ac);
-		indexing(arr, info.stack_a, ac);
-		free(arr);
-		if (is_sorted(info.stack_a) == 1)
-			return (0);
-		sort(info);
-	}
+	info.stack_a = calloc(1, sizeof(t_stack));
+	info.stack_b = calloc(1, sizeof(t_stack));
+	arr = ft_adtoi(0, strs, ac);
+	put_value(arr, info.stack_a, ac);
+	indexing(arr, info.stack_a, ac);
+	free(arr);
+	if (is_sorted(info.stack_a) == 1)
+		return (0);
+	sort(info);
 	ft_free(strs);
 }
