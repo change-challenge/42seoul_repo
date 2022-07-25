@@ -22,7 +22,7 @@ int	*ft_adtoi(int i, char **strs, int ac)
 	{
 		num = 0;
 		sign = 1;
-		j = check_sign(strs[i][j], strs[i][j + 1], &sign);
+		j = check_sign(strs[i][0], strs[i][1], &sign);
 		while (strs[i][j])
 		{
 			if (!(strs[i][j] >= '0' && strs[i][j] <= '9'))

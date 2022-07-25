@@ -6,16 +6,14 @@
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 17:04:01 by sesim            ###   ########.fr       */
+/*   Updated: 2022/07/25 17:53:25 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/libft.h"
-#include <stdio.h> // 자객주의
-#include <limits.h>
+# include "../libft/libft.h"
 
 # define MAX 2147483647
 # define MIN -2147483648
@@ -55,24 +53,24 @@ void	rr(t_info info);
 void	rra(t_stack *stack_a);
 void	rrb(t_stack *stack_b);
 void	rrr(t_info info);
-void    put_value(int *arr, t_stack *stack_a, int ac);
-void    indexing(int *arr, t_stack *stack, int ac);
-void    sort_3(t_stack *stack);
-int 	is_sorted(t_stack *stack);
-void    sort_5(t_info info);
+void	put_value(int *arr, t_stack *stack_a, int ac);
+void	indexing(int *arr, t_stack *stack, int ac);
+void	sort_3(t_stack *stack);
+int		is_sorted(t_stack *stack);
+void	sort_5(t_info info);
 void	sort_4(t_info info);
-int 	min_num(t_stack *stack);
-int 	max_num(t_stack *stack);
-int 	find_first(t_stack *stack, int flag);
+int		min_num(t_stack *stack);
+int		max_num(t_stack *stack);
+int		find_first(t_stack *stack, int flag);
 void	sort(t_info info);
-void    a_to_b(t_info info, int chunk);
-void    sort_b(t_stack *stack);
-void    b_to_a(t_info info);
+void	a_to_b(t_info info, int chunk);
+void	sort_b(t_stack *stack);
+void	b_to_a(t_info info);
 void	ft_free(char **strs);
-int parsing(char ***strs, char **argv);
-int	check_sign(char c, char next_c, int *sign);
-int	is_dup(int *arr, int i);
-int	*ft_adtoi(int i, char **strs, int ac);
+int		parsing(char ***strs, char **argv);
+int		check_sign(char c, char next_c, int *sign);
+int		is_dup(int *arr, int i);
+int		*ft_adtoi(int i, char **strs, int ac);
 int		ft_swap(t_stack *stack);
 void	ft_error(char **strs);
 
