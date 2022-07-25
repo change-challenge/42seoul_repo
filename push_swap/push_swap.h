@@ -6,16 +6,19 @@
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 15:21:41 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/07/25 17:04:01 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h> // 자객주의
 #include <limits.h>
+
+# define MAX 2147483647
+# define MIN -2147483648
 
 typedef struct s_node
 {
@@ -67,8 +70,10 @@ void    sort_b(t_stack *stack);
 void    b_to_a(t_info info);
 void	ft_free(char **strs);
 int parsing(char ***strs, char **argv);
-int	*ft_adtoi(char **strs, int ac);
-void	ft_swap(t_stack *stack);
-
+int	check_sign(char c, char next_c, int *sign);
+int	is_dup(int *arr, int i);
+int	*ft_adtoi(int i, char **strs, int ac);
+int		ft_swap(t_stack *stack);
+void	ft_error(char **strs);
 
 #endif

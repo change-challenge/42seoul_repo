@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 10:00:11 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 15:23:36 by hojinjang        ###   ########.fr       */
+/*   Created: 2022/07/25 11:24:45 by sesim             #+#    #+#             */
+/*   Updated: 2022/07/25 16:06:46 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,8 @@
 
 void	push_head(t_stack *stack, t_node *node)
 {
-
 	node->next = stack->head;
 	stack->head = node;
-}
-
-t_node	*pop_head(t_stack *stack)
-{
-	t_node	*node;
-
-	node = stack->head;
-	if (node == 0)
-		return (0);
-	stack->head = node->next;
-	node->next = 0;
-	return (node);
 }
 
 void	push_tail(t_stack *stack, t_node *node)
@@ -47,6 +34,18 @@ void	push_tail(t_stack *stack, t_node *node)
 	stack->tail = node;
 }
 
+t_node	*pop_head(t_stack *stack)
+{
+	t_node	*node;
+
+	node = stack->head;
+	if (node == 0)
+		return (0);
+	stack->head = node->next;
+	node->next = 0;
+	return (node);
+}
+
 t_node	*pop_tail(t_stack *stack)
 {
 	t_node	*curr;
@@ -63,16 +62,17 @@ t_node	*pop_tail(t_stack *stack)
 	return (res);
 }
 
-void	ft_swap(t_stack *stack)
+int	ft_swap(t_stack *stack)
 {
 	int	tmp;
 
 	if (stack->head == 0 || stack->head->next == 0)
-		return ;
+		return (0);
 	tmp = stack->head->val;
 	stack->head->val = stack->head->next->val;
 	stack->head->next->val = tmp;
 	tmp = stack->head->idx;
 	stack->head->idx = stack->head->next->idx;
 	stack->head->next->idx = tmp;
+	return (1);
 }
