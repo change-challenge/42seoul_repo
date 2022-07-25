@@ -1,6 +1,4 @@
 #include "checker.h"
-#include "get_next_line/get_next_line.h"
-
 
 void    put_value(int *arr, t_stack *stack_a, int ac)
 {

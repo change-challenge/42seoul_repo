@@ -5,67 +5,107 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 20:19:24 by kyhan             #+#    #+#             */
-/*   Updated: 2022/07/25 14:26:56 by hojinjang        ###   ########.fr       */
+/*   Created: 2022/03/01 21:20:27 by hchang            #+#    #+#             */
+/*   Updated: 2022/07/25 17:09:25 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen_g(char *str)
+void	*ft_lstfclean_g(t_lst **lst)
 {
-	size_t	c;
+	t_lst	*tmp;
 
-	c = 0;
-	if (!str)
-		return (0);
-	while (str[c] != '\0')
-		c++;
-	return (c);
+	if (!lst)
+		return (NULL);
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free((*lst)->content);
+		free(*lst);
+		*lst = tmp;
+	}
+	return (NULL);
 }
 
-char	*ft_strjoin_g(char *s1, char *s2)
+char	*ft_strdup_g(const char *s1)
 {
-	size_t	i;
-	size_t	c;
-	char	*str;
+	int		idx;
+	char	*result;
 
-	if (!s1)
+	idx = 0;
+	while (s1[idx])
+		idx++;
+	result = malloc(sizeof(char) * (idx + 1));
+	if (!(result))
+		return (NULL);
+	idx = 0;
+	while (s1[idx])
 	{
-		s1 = (char *)malloc(1 * sizeof(char));
-		s1[0] = '\0';
+		result[idx] = s1[idx];
+		idx++;
 	}
-	if (!s1 || !s2)
-		return (NULL);
-	str = malloc((ft_strlen_g(s1) + ft_strlen_g(s2) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	i = -1;
-	c = 0;
-	if (s1)
-		while (s1[++i] != '\0')
-			str[i] = s1[i];
-	while (s2[c] != '\0')
-		str[i++] = s2[c++];
-	str[ft_strlen_g(s1) + ft_strlen_g(s2)] = '\0';
-	free(s1);
-	return (str);
+	result[idx] = '\0';
+	return (result);
 }
 
-char	*ft_strchr_g(char *s, int c)
+size_t	ft_strlcat_g(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	idx;
 
-	i = 0;
-	if (!s)
-		return (0);
-	if (c == '\0')
-		return ((char *)&s[ft_strlen_g(s)]);
-	while (s[i] != '\0')
+	idx = 0;
+	dst_len = 0;
+	src_len = 0;
+	while (dst[dst_len])
+		dst_len++;
+	while (src[src_len])
+		src_len++;
+	if (dst_len + 1 > dstsize)
+		return (dstsize + src_len);
+	while ((dst_len + idx < dstsize - 1) && src[idx])
 	{
-		if (s[i] == (char) c)
-			return ((char *)&s[i]);
-		i++;
+		dst[dst_len + idx] = src[idx];
+		if (src[idx++] == '\n')
+			break ;
 	}
-	return (0);
+	dst[dst_len + idx] = '\0';
+	return (dst_len + src_len);
+}
+
+t_lst	*ft_lstnew_add_back(t_lst **lst, void *content)
+{
+	t_lst	*new;
+	t_lst	*tmp;
+
+	new = (t_lst *)malloc(sizeof(t_lst));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	if (!lst)
+		return (NULL);
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		tmp = *lst;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	return (new);
+}
+
+t_lst	*ft_lstnew_g(void *content)
+{
+	t_lst	*new;
+
+	new = (t_lst *)malloc(sizeof(t_lst));
+	if (new == NULL)
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

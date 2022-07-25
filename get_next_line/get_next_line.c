@@ -5,102 +5,113 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/29 20:13:00 by kyhan             #+#    #+#             */
-/*   Updated: 2022/07/25 14:26:54 by hojinjang        ###   ########.fr       */
+/*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
+/*   Updated: 2022/07/25 17:09:34 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_get_line(char *buffer)
+size_t	check_enter_len(const char *s, int c, size_t *len)
 {
-	char	*line;
-	int		index;
+	int	idx;
 
-	index = 0;
-	if (!buffer[index])
-		return (NULL);
-	while (buffer[index] != '\0' && buffer[index] != '\n')
-		index++;
-	line = malloc(sizeof(char) * (index + 2));
-	if (line == 0)
-		return (0);
-	index = 0;
-	while (buffer[index] != '\0' && buffer[index] != '\n')
+	idx = 0;
+	while (s[*len])
+		(*len)++;
+	while (s[idx])
 	{
-		line[index] = buffer[index];
-		index++;
+		if (s[idx] == (unsigned char)c)
+			return (idx);
+		idx++;
 	}
-	if (buffer[index] == '\n')
-	{
-		line[index] = buffer[index];
-		index++;
-	}
-	line[index] = '\0';
-	return (line);
+	return (-1);
 }
 
-char	*ft_save(char *buffer)
+size_t	check_line(int fd, t_lst **res_lst, size_t *res_len)
 {
-	int		i;
-	int		j;
-	char	*backup;
+	t_lst	*curr;
+	ssize_t	rd;
+	size_t	enter_pos;
+	size_t	content_len;
 
-	i = 0;
-	j = 0;
-	while (buffer[i] != '\0' && buffer[i] != '\n')
-		i++;
-	if (buffer[i] == '\0')
+	curr = *res_lst;
+	while (1)
 	{
-		free(buffer);
-		return (0);
-	}
-	backup = malloc(sizeof(char) * (ft_strlen_g(buffer) - i + 1));
-	if (backup == 0)
-		return (0);
-	i++;
-	while (buffer[i] != '\0')
-		backup[j++] = buffer[i++];
-	backup[j] = '\0';
-	free(buffer);
-	return (backup);
-}
-
-char	*ft_read(int fd, char *buffer)
-{
-	char	*buf;
-	int		return_value;
-
-	return_value = 1;
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (buf == 0)
-		return (0);
-	while (!ft_strchr_g(buffer, '\n') && return_value != 0)
-	{
-		return_value = read(fd, buf, BUFFER_SIZE);
-		if (return_value == -1)
+		content_len = 0;
+		if (curr)
 		{
-			free(buf);
-			return (0);
+			enter_pos = check_enter_len((curr)->content, '\n', &content_len);
+			if (enter_pos != (size_t) - 1)
+			{
+				*res_len += (enter_pos + 1);
+				return (rd);
+			}
+			*res_len += content_len;
 		}
-		buf[return_value] = '\0';
-		buffer = ft_strjoin_g(buffer, buf);
+		curr = read_line(fd, res_lst, &rd);
+		if (!curr)
+			return (rd);
 	}
-	free(buf);
-	return (buffer);
+	return (rd);
+}
+
+t_lst	*read_line(int fd, t_lst **t_back, ssize_t *rd)
+{
+	char		*tmp;
+
+	tmp = (char *)malloc(BUFFER_SIZE + 1);
+	*rd = read(fd, tmp, BUFFER_SIZE);
+	if (*rd <= 0)
+	{
+		free(tmp);
+		tmp = NULL;
+		return (NULL);
+	}
+	tmp[*rd] = '\0';
+	return (ft_lstnew_add_back(t_back, tmp));
+}
+
+char	*make_line(t_lst **res_lst, size_t res_len, char *res)
+{
+	char	*save;
+	size_t	tmp;
+	size_t	enter_pos;
+	t_lst	*clean_lst;
+
+	tmp = 0;
+	res[0] = 0;
+	clean_lst = *res_lst;
+	while (*res_lst)
+	{
+		ft_strlcat_g(res, (*res_lst)->content, res_len + 1);
+		if ((*res_lst)->next == NULL)
+			save = (*res_lst)->content;
+		*res_lst = (*res_lst)->next;
+	}
+	enter_pos = check_enter_len(save, '\n', &tmp);
+	if ((enter_pos != (size_t)-1) && *(save + enter_pos + 1) != '\0')
+		*res_lst = ft_lstnew_g(ft_strdup_g(save + (enter_pos + 1)));
+	ft_lstfclean_g(&clean_lst);
+	return (res);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*line;
+	char			*res;
+	static t_lst	*res_lst;
+	size_t			res_len;
+	ssize_t			rd;
 
+	res_len = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
-	buffer = ft_read(fd, buffer);
-	if (buffer == 0)
-		return (0);
-	line = ft_get_line(buffer);
-	buffer = ft_save(buffer);
-	return (line);
+		return (NULL);
+	rd = check_line(fd, &res_lst, &res_len);
+	if ((!rd && !res_len) || rd == -1)
+		return ((char *)ft_lstfclean_g(&res_lst));
+	res = (char *)malloc(sizeof(char) * (res_len + 1));
+	if (!res)
+		return (NULL);
+	res[res_len] = '\0';
+	return (make_line(&res_lst, res_len, res));
 }
