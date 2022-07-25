@@ -6,14 +6,14 @@
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 13:52:55 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/07/25 15:21:39 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/07/25 15:43:01 by sesim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "./libft/libft.h"
+#include "../libft/libft.h"
 #include <stdio.h> // 자객 주의 
 #include <limits.h>
 

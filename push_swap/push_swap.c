@@ -17,16 +17,6 @@ void    put_value(int *arr, t_stack *stack_a, int ac)
     }
 }
 
-void ft_free(char **strs)
-{
-    int i;
-
-    i = 0;
-    while (strs[i])
-        free (strs[i++]);
-    free(strs);
-}
-
 void    struct_free(t_info info)
 {
     t_node  *curr;
@@ -57,7 +47,7 @@ int main(int argc, char **argv)
     {
 		info.stack_a = calloc(1, sizeof(t_stack));
 		info.stack_b = calloc(1, sizeof(t_stack));
-        arr = ft_adtoi(strs, ac);
+        arr = ft_adtoi(0, strs, ac);
         put_value(arr, info.stack_a, ac);
 		indexing(arr, info.stack_a, ac);
         free(arr);

@@ -1,59 +1,57 @@
+
 #include "push_swap.h"
-#include <stdio.h>
 
-static void ft_idx_swap(int *a, int *b)
+static void	ft_idx_swap(int *a, int *b)
 {
-	int tmp_a;
+	int	tmp;
 
-	tmp_a = *a;
+	tmp = *a;
 	*a = *b;
-	*b = tmp_a;
+	*b = tmp;
 }
 
-void q_sort(int *data, int l, int r)
+void	q_sort(int *arr, int l, int r)
 {
 	int	left;
 	int	right;
-	int pivot;
+	int	pivot;
 
-	pivot = data[(l + r) / 2];
+	pivot = arr[(l + r) / 2];
 	left = l;
 	right = r;
-	while(left <= right)
+	while (left <= right)
 	{
-		while(data[left] < pivot)
+		while (arr[left] < pivot)
 			left++;
-		while(data[right] > pivot)
+		while (arr[right] > pivot)
 			right--;
-
 		if (left <= right)
-			ft_idx_swap(&data[left++], &data[right--]);
+			ft_idx_swap(&arr[left++], &arr[right--]);
 	}
 	if (l < right)
-		q_sort(data, l, right);
+		q_sort(arr, l, right);
 	if (r > left)
-		q_sort(data, left, r);
+		q_sort(arr, left, r);
 }
 
-void    indexing(int *arr, t_stack *stack, int ac)
+void	indexing(int *arr, t_stack *stack, int ac)
 {
-    int i;
-    t_node *curr;
+	t_node	*curr;
+	int		i;
 
-    curr = stack->head;
-    q_sort(arr, 0, ac - 1);
-    while (curr)
-    {
-        i = 0;
-        while (i < ac)
-        {
-            if (arr[i] == curr->val)
-            {
-                curr->idx = i;
-                break ;
-            }
-            i++;
-        }
-        curr = curr->next;
-    }
+	curr = stack->head;
+	q_sort(arr, 0, ac - 1);
+	while (curr)
+	{
+		i = 0;
+		while (i++ < ac)
+		{
+			if (arr[i] == curr->val)
+			{
+				curr->idx = i;
+				break ;
+			}
+		}
+		curr = curr->next;
+	}
 }
