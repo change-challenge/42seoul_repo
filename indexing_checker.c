@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "checker.h"
 #include <stdio.h>
 
 static void ft_idx_swap(int *a, int *b)

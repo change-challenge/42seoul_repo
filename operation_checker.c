@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operation.c                                        :+:      :+:    :+:   */
+/*   operation_checker.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 10:00:11 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 15:23:36 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/07/25 15:23:34 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	push_head(t_stack *stack, t_node *node)
 {
@@ -76,3 +76,5 @@ void	ft_swap(t_stack *stack)
 	stack->head->idx = stack->head->next->idx;
 	stack->head->next->idx = tmp;
 }
+
+

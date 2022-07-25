@@ -77,7 +77,6 @@ void	hour_glass(t_info info)
 
 void	sort(t_info info)
 {
-	printf ("%d\n", info.stack_a->size);
 	if (info.stack_a->size == 2)
 		sa(info.stack_a);
 	else if (info.stack_a->size == 3)

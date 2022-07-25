@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/25 15:21:41 by hojinjang        ###   ########.fr       */
+/*   Created: 2022/07/25 13:52:55 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/07/25 15:21:39 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 #include "./libft/libft.h"
-#include <stdio.h> // 자객주의
+#include <stdio.h> // 자객 주의 
 #include <limits.h>
 
 typedef struct s_node
@@ -69,6 +69,5 @@ void	ft_free(char **strs);
 int parsing(char ***strs, char **argv);
 int	*ft_adtoi(char **strs, int ac);
 void	ft_swap(t_stack *stack);
-
 
 #endif
