@@ -1,38 +1,38 @@
 #include "push_swap.h"
 
-void    sort_3(t_stack *stack)
+void	sort_3(t_stack *stack)
 {
-    t_node *curr;
-    int     top;
-    int     mid;
-    int     bottom;
+	t_node	*curr;
+	int		top;
+	int		mid;
+	int		bottom;
 
-    curr = stack->head;
-    top = curr->idx;
-    mid = curr->next->idx;
-    bottom = curr->next->next->idx;
-    if (mid == max_num(stack) && top == min_num(stack))
-    {
-        rra(stack);
-        sa(stack);
-    }
-    else if (mid == min_num(stack) && bottom == max_num(stack))
-        sa(stack);
-    else if (mid == max_num(stack) && bottom == min_num(stack))
-        rra(stack);
-    else if (top == max_num(stack) && mid == min_num(stack))
-        ra(stack);
-    else if (top == max_num(stack) && bottom == min_num(stack))
-    {
-        ra(stack);
-        sa(stack);
-    }
+	curr = stack->head;
+	top = curr->idx;
+	mid = curr->next->idx;
+	bottom = curr->next->next->idx;
+	if (mid == max_num(stack) && top == min_num(stack))
+	{
+		rra(stack);
+		sa(stack);
+	}
+	else if (mid == min_num(stack) && bottom == max_num(stack))
+		sa(stack);
+	else if (mid == max_num(stack) && bottom == min_num(stack))
+		rra(stack);
+	else if (top == max_num(stack) && mid == min_num(stack))
+		ra(stack);
+	else if (top == max_num(stack) && bottom == min_num(stack))
+	{
+		ra(stack);
+		sa(stack);
+	}
 }
 
-void    sort_5(t_info info)
+void	sort_5(t_info info)
 {
-    int     idx;
-    
+	int	idx;
+
 	idx = find_first(info.stack_a, 0);
 	while (idx <= 3 && --idx)
 		ra(info.stack_a);
@@ -52,8 +52,8 @@ void    sort_5(t_info info)
 
 void	sort_4(t_info info)
 {
-    int     idx;
-    
+	int	idx;
+
 	idx = find_first(info.stack_a, 0);
 	while (idx <= 2 && --idx)
 		ra(info.stack_a);
@@ -80,7 +80,7 @@ void	sort(t_info info)
 	if (info.stack_a->size == 2)
 		sa(info.stack_a);
 	else if (info.stack_a->size == 3)
-		sort_3(info.stack_a);	
+		sort_3(info.stack_a);
 	else if (info.stack_a->size == 4)
 		sort_4(info);
 	else if (info.stack_a->size == 5)
