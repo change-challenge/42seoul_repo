@@ -38,6 +38,8 @@ void	sort_5(t_info info)
 		ra(info.stack_a);
 	while (idx > 3 && idx < 6 && idx++)
 		rra(info.stack_a);
+	if (is_sorted(info.stack_a))
+		return ;
 	pb(info);
 	idx = find_first(info.stack_a, 1);
 	if (idx == 2)
@@ -59,6 +61,8 @@ void	sort_4(t_info info)
 		ra(info.stack_a);
 	while (idx > 2 && idx < 5 && idx++)
 		rra(info.stack_a);
+	if (is_sorted(info.stack_a))
+		return ;
 	pb(info);
 	sort_3(info.stack_a);
 	pa(info);
