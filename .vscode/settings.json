@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"checker.h": "c",
+		"get_next_line.h": "c",
+		"push_swap.h": "c"
+	}
+}
