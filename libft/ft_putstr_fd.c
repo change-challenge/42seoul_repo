@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 20:31:43 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:31:45 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/07 16:22:00 by hchang            #+#    #+#             */
+/*   Updated: 2021/12/07 17:55:52 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s || fd < 0)
+	if (fd < 0)
+		return ;
+	if (!s)
 		return ;
 	while (*s)
 	{

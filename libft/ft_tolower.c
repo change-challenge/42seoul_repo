@@ -3,18 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:53:41 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:53:43 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/17 21:40:18 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 16:55:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+static int	is_upper(int c)
+{
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
+
 int	ft_tolower(int c)
 {
-	if (c >= 65 && c <= 90)
-	{
+	if (is_upper(c))
 		c += 32;
-	}
 	return (c);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:37:09 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:37:39 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/29 16:22:33 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 15:31:50 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*ptr1;
-	const unsigned char	*ptr2;
+	const unsigned char	*s1_1;
+	const unsigned char	*s2_1;
 
-	ptr1 = (const unsigned char *)s1;
-	ptr2 = (const unsigned char *)s2;
+	s1_1 = s1;
+	s2_1 = s2;
 	while (n--)
 	{
-		if (*ptr1 != *ptr2)
-			return (*ptr1 - *ptr2);
-		ptr1++;
-		ptr2++;
+		if (*s1_1 != *s2_1)
+			return (*s1_1 - *s2_1);
+		s1_1++;
+		s2_1++;
 	}
 	return (0);
 }

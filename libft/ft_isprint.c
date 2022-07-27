@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:52:36 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:52:37 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/17 21:16:41 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 16:52:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isprint(int c)
 {
-	return (c >= 32 && c <= 126);
+	if (c < 32 || c > 126)
+		return (0);
+	return (1);
 }

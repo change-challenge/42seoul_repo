@@ -3,76 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 20:31:08 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:38:25 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/06 15:21:53 by hojinjang         #+#    #+#             */
+/*   Updated: 2021/12/06 20:49:01 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_put(char *str, int len, int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		str[i] = 48;
-	while (n != 0)
-	{
-		str[len - i - 1] = n % 10 + '0';
-		n /= 10;
-		i++;
-	}
-}
-
-int	ft_len(int n)
+static size_t	ft_intlen(long long n)
 {
 	int	len;
 
 	len = 0;
-	if (n < 0)
-	{
-		if (n == -2147483648)
-			return (10);
-		else
-			n = -n;
-	}
-	else if (n == 0)
-		return (1);
-	while (n != 0)
+	if (n <= 0)
 	{
 		len++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
 		n /= 10;
+		len++;
 	}
 	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		minus;
-	int		len;
+	int			minus;
+	char		*result;
+	long long	int_len;
+	long long	num;
 
-	minus = (n < 0);
-	len = ft_len(n);
-	str = (char *)malloc(sizeof(char) * (len + minus + 1));
-	if (str == 0)
+	minus = 1;
+	num = (long long) n;
+	int_len = ft_intlen(num);
+	if (n < 0)
+	{
+		minus *= -1;
+		num = - (long long) n;
+	}
+	result = malloc(sizeof(char) * int_len + 1);
+	if (!(result))
 		return (NULL);
-	str[len + minus] = '\0';
-	if (n == -2147483648)
+	result[int_len] = 0;
+	while (int_len-- > 0)
 	{
-		str[10] = '8';
-		n = 214748364;
-		str[0] = '-';
-		len--;
+		result[int_len] = (num % 10) + '0';
+		num /= 10;
 	}
-	else if (minus == 1)
-	{
-		str[0] = '-';
-		n = -n;
-	}
-	ft_put(&str[minus], len, n);
-	return (&str[0]);
+	if (minus == -1)
+		result[0] = '-';
+	return (result);
 }

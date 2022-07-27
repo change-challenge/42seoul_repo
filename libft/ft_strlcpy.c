@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:42:21 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:42:23 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/29 16:22:46 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 18:06:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t	index;
-	size_t	size;
+	size_t	idx;
+	size_t	src_len;
 
-	index = 0;
-	size = ft_strlen(src);
-	if (!dst || !src)
-		return (0);
-	if (dstsize == 0)
-		return (size);
-	while (src[index] != '\0' && index + 1 < dstsize)
+	idx = 0;
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize != 0)
 	{
-		dst[index] = src[index];
-		index++;
+		while (idx < (dstsize - 1) && src[idx])
+		{
+			dst[idx] = src[idx];
+			idx++;
+		}
+		dst[idx] = '\0';
 	}
-	dst[index] = '\0';
-	return (size);
+	return (src_len);
 }

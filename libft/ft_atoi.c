@@ -3,37 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:50:09 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:42:16 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/19 14:20:26 by hchang            #+#    #+#             */
+/*   Updated: 2022/01/12 17:42:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_isspace(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
+
 int	ft_atoi(const char *str)
 {
-	long	res;
-	int		minus;
-	size_t	i;
+	int		idx;
+	long	minus;
+	long	result;
 
-	i = 0;
-	res = 0;
+	idx = 0;
+	result = 0;
 	minus = 1;
-	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && (str[i] != '\0'))
-		i++;
-	if (str[i] == '-')
-		minus = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] != '\0' && str[i] >= '0' && str[i] <= '9')
+	while (ft_isspace(str[idx]))
+		idx++;
+	if (str[idx] == '+' || str[idx] == '-')
 	{
-		res = res * 10 + (str[i++] - 48);
-		if (res > 2147483647 && minus == 1)
-			return (-1);
-		if (res > 2147483648 && minus == -1)
-			return (0);
+		if (str[idx] == '-')
+			minus *= -1;
+		idx++;
 	}
-	return (minus * res);
+	while (str[idx] >= '0' && str[idx] <= '9')
+	{
+		result = (result * 10) + (str[idx] - '0');
+		if (result > 2147483647 && minus == 1)
+			return (-1);
+		if (result > 2147483648 && minus == -1)
+			return (0);
+		idx++;
+	}
+	return (minus * result);
 }

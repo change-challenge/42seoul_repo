@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sesim <sesim@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/19 08:08:54 by sesim             #+#    #+#              #
-#    Updated: 2022/07/26 12:34:03 by sesim            ###   ########.fr        #
+#    Created: 2022/07/27 20:31:50 by hchang            #+#    #+#              #
+#    Updated: 2022/07/27 21:07:05 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,32 +14,30 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRCS_DIR = ./srcs/
-SRCS_BONUS_DIR = ./bonus_srcs/
+SRCS = push_swap.c \
+	   command_1.c \
+	   command_2.c \
+	   command_3.c \
+	   parsing_1.c \
+	   parsing_2.c \
+	   indexing.c \
+	   operation.c \
+	   sort.c \
+	   sort_many.c \
+	   sort_utils.c
 
-SRCS = $(SRCS_DIR)push_swap.c \
-	   $(SRCS_DIR)command_1.c \
-	   $(SRCS_DIR)command_2.c \
-	   $(SRCS_DIR)command_3.c \
-	   $(SRCS_DIR)parsing_1.c \
-	   $(SRCS_DIR)parsing_2.c \
-	   $(SRCS_DIR)indexing.c \
-	   $(SRCS_DIR)operater.c \
-	   $(SRCS_DIR)sort.c \
-	   $(SRCS_DIR)sort_under_5.c \
-	   $(SRCS_DIR)sort_utils.c
-
-SRCS_BONUS = $(SRCS_BONUS_DIR)checker.c \
-			 $(SRCS_BONUS_DIR)command_1_bonus.c \
-			 $(SRCS_BONUS_DIR)command_2_bonus.c \
-			 $(SRCS_BONUS_DIR)command_3_bonus.c \
-			 $(SRCS_BONUS_DIR)parsing_1_bonus.c \
-			 $(SRCS_BONUS_DIR)parsing_2_bonus.c \
-			 $(SRCS_BONUS_DIR)indexing_bonus.c \
-			 $(SRCS_BONUS_DIR)operater_bonus.c
+SRCS_BONUS = checker.c \
+			 command_1_bonus.c \
+			 command_2_bonus.c \
+			 command_3_bonus.c \
+			 parsing_1_bonus.c \
+			 parsing_2_bonus.c \
+			 indexing_bonus.c \
+			 operation_bonus.c \
+			 get_next_line.c \
+			 get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
-
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 NAME = push_swap

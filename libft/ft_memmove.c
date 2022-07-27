@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:31:50 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:35:44 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/20 17:50:49 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 15:31:08 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*temp_dst;
-	unsigned const char	*temp_src;
+	unsigned char		*dst2;
+	unsigned char		*src2;
 
-	temp_dst = (unsigned char *)dst;
-	temp_src = (unsigned const char *)src;
-	if (!dst && !src)
-		return (0);
-	if (temp_dst <= temp_src)
+	if (dst == src || len == 0)
+		return (dst);
+	if (dst < src)
 	{
+		dst2 = (unsigned char *)dst;
+		src2 = (unsigned char *)src;
 		while (len--)
-			*(temp_dst++) = *(temp_src++);
+		{
+			*dst2++ = *src2++;
+		}
 	}
 	else
 	{
-		temp_dst += (len - 1);
-		temp_src += (len - 1);
+		dst2 = (unsigned char *)dst + (len - 1);
+		src2 = (unsigned char *)src + (len - 1);
 		while (len--)
-			*(temp_dst--) = *(temp_src--);
+		{
+			*dst2-- = *src2--;
+		}
 	}
 	return (dst);
 }

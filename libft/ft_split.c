@@ -3,99 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 20:30:54 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:30:58 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/06 00:38:54 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/01/12 16:44:27 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**freeall(char **s)
+int	split_count(char const *s, char c)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] != NULL)
-	{
-		free(s[i]);
-		i++;
-	}
-	free(s);
-	return (NULL);
-}
-
-int	is_sep(char const s, char c)
-{
-	if (s == c)
-		return (1);
-	else
-		return (0);
-}
-
-int	count_words(char const *str, char c)
-{
+	int	idx;
 	int	cnt;
 
+	idx = 0;
 	cnt = 0;
-	while (*str)
+	while (s[idx])
 	{
-		while (*str && is_sep(*str, c))
-			str++;
-		if (*str && !is_sep(*str, c))
+		if (s[idx] == c)
+			idx++;
+		else
 		{
 			cnt++;
-			while (*str && !is_sep(*str, c))
-				str++;
+			while (s[idx] && s[idx] != c)
+				idx++;
 		}
 	}
 	return (cnt);
 }
 
-char	*malloc_word(char const *str, char c)
+char	**split_free(char **result, int r_idx)
 {
-	char	*word;
-	int		i;
+	int	idx;
 
-	i = 0;
-	while (str[i] && !is_sep(str[i], c))
-		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
-	i = 0;
-	while (str[i] && !is_sep(str[i], c))
+	idx = 0;
+	while (idx < r_idx)
 	{
-		word[i] = str[i];
-		i++;
+		free(result[idx]);
+		idx++;
+	}	
+	free(result);
+	return (result);
+}
+
+char	*split_make(char *r_word, char const *base, int b_base, int word_len)
+{
+	int	idx;
+
+	idx = 0;
+	while (word_len > 0)
+	{
+		r_word[idx] = base[b_base - word_len];
+		idx++;
+		word_len--;
 	}
-	word[i] = '\0';
-	return (word);
+	r_word[idx] = '\0';
+	return (r_word);
+}
+
+char	**split_work(char **result, char const *base, char deli, int word_cnt)
+{
+	int	r_idx;
+	int	b_idx;
+	int	word_len;
+
+	r_idx = 0;
+	b_idx = 0;
+	word_len = 0;
+	while (base[b_idx] && r_idx < word_cnt)
+	{
+		while (base[b_idx] && base[b_idx] == deli)
+			b_idx++;
+		while (base[b_idx] && base[b_idx] != deli)
+		{
+			b_idx++;
+			word_len++;
+		}
+		result[r_idx] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!(result[r_idx]))
+			return (split_free(result, r_idx));
+		result[r_idx] = split_make(result[r_idx], base, b_idx, word_len);
+		word_len = 0;
+		r_idx++;
+	}
+	result[r_idx] = 0;
+	return (result);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
-	int		i;
+	int		word_cnt;
+	char	**result_split;
 
-	i = 0;
-	if (!s)
+	if (s == 0)
 		return (NULL);
-	res = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (res == 0)
+	word_cnt = split_count(s, c);
+	result_split = (char **)malloc(sizeof(char *) * (word_cnt + 1));
+	if (!(result_split))
 		return (NULL);
-	while (*s)
-	{
-		while (*s && is_sep(*s, c))
-			s++;
-		if (*s && !is_sep(*s, c))
-		{
-			res[i++] = malloc_word(s, c);
-			if (res == 0)
-				return (freeall(res));
-			while (*s && !is_sep(*s, c))
-				s++;
-		}
-	}
-	res[i] = 0;
-	return (res);
+	result_split = split_work(result_split, s, c, word_cnt);
+	return (result_split);
 }

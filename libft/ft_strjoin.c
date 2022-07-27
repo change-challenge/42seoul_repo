@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 20:30:31 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:30:32 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/04 00:34:20 by hojinjang         #+#    #+#             */
+/*   Updated: 2021/12/04 01:26:05 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,19 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-	size_t	s1_len;
-	size_t	s2_len;
+	char			*new_str;
+	unsigned int	total_len;
+	unsigned int	idx;
 
-	i = 0;
-	j = 0;
-	if (s1 == 0 || s2 == 0)
+	if (!s1 || !s2)
 		return (NULL);
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
-	if (str == 0)
+	idx = 0;
+	total_len = ft_strlen(s1) + ft_strlen(s2);
+	new_str = malloc(sizeof(char) * (total_len + 1));
+	if (!(new_str))
 		return (NULL);
-	while (i < s1_len)
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (j < s2_len)
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
+	ft_memcpy(new_str, s1, ft_strlen(s1));
+	ft_memcpy(new_str + ft_strlen(s1), s2, ft_strlen(s2));
+	new_str[total_len] = '\0';
+	return (new_str);
 }

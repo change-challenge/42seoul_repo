@@ -3,18 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:53:12 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:53:12 by kyhan            ###   ########.fr       */
+/*   Created: 2021/11/17 21:36:28 by hchang            #+#    #+#             */
+/*   Updated: 2021/11/30 16:54:26 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+static int	is_lower(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
 int	ft_toupper(int c)
 {
-	if (c >= 97 && c <= 122)
-	{
+	if (is_lower(c))
 		c -= 32;
-	}
 	return (c);
 }

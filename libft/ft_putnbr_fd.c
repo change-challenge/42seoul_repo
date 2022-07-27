@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 20:32:11 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 20:32:12 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/07 16:23:06 by hchang            #+#    #+#             */
+/*   Updated: 2021/12/07 17:54:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	c;
+	long long	num;
 
-	if (n == -2147483648)
-	{
-		write(fd, "-2147483648", 11);
+	num = n;
+	if (fd < 0)
 		return ;
-	}
-	if (n < 0)
+	if (num == -2147483648)
 	{
-		n = -n;
+		ft_putnbr_fd(num / 10, fd);
+		write(fd, "8", 1);
+	}
+	else if (n < 0)
+	{
 		write(fd, "-", 1);
-	}
-	if (n <= 9)
-	{
-		c = 48 + n;
-		write(fd, &c, 1);
+		ft_putnbr_fd(-n, fd);
 	}
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		if (num >= 10)
+			ft_putnbr_fd(num / 10, fd);
+		num %= 10;
+		num += '0';
+		write(fd, &num, 1);
 	}
 }

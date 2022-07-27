@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/15 18:57:09 by kyhan             #+#    #+#             */
-/*   Updated: 2022/03/15 18:57:09 by kyhan            ###   ########.fr       */
+/*   Created: 2021/12/03 23:50:32 by hojinjang         #+#    #+#             */
+/*   Updated: 2022/01/12 17:09:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
+	char			*new_str;
+	unsigned int	idx;
 
-	i = 0;
-	j = 0;
-	if (!s)
-		return (0);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (str == 0)
-		return (0);
-	while (s[i] != '\0')
+	idx = 0;
+	if (!s || start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	new_str = malloc(sizeof(char) * (len + 1));
+	if (!new_str)
+		return (NULL);
+	while (len)
 	{
-		if (i >= start && j < len)
-			str[j++] = s[i];
-		i++;
+		new_str[idx] = s[start + idx];
+		len--;
+		idx++;
 	}
-	str[j] = '\0';
-	return (str);
+	new_str[idx] = '\0';
+	return (new_str);
 }
