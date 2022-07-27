@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:15 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:05:33 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/27 21:18:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 static void	ft_idx_swap(int *a, int *b)
 {

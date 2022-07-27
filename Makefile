@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/27 20:31:50 by hchang            #+#    #+#              #
-#    Updated: 2022/07/27 21:07:05 by hchang           ###   ########.fr        #
+#    Updated: 2022/07/27 21:21:33 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS = push_swap.c \
 	   sort_many.c \
 	   sort_utils.c
 
-SRCS_BONUS = checker.c \
+SRCS_BONUS = checker_bonus.c \
 			 command_1_bonus.c \
 			 command_2_bonus.c \
 			 command_3_bonus.c \

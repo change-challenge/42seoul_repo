@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:56:18 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:05:16 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/27 21:18:47 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	pa(t_info info)
 {

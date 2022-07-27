@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:33 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:05:39 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/27 21:19:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 int	parsing(char ***strs, char **argv)
 {

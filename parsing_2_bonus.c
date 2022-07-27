@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:05:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/27 21:19:05 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	put_value(int *arr, t_stack *stack_a, int ac)
 {

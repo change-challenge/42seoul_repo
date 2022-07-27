@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:56:46 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:05:20 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/27 21:18:51 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "checker_bonus.h"
 
 void	ra(t_stack *stack_a)
 {
