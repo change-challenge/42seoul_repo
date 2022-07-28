@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/28 18:47:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/28 19:07:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ int		*ft_adtoi(int i, char **strs, int ac);
 int		ft_swap(t_stack *stack);
 void	ft_error(char **strs);
 void	ft_error_null(char *line);
-void	parsing_split(char *tmp, char *line, char **argv);
+void	parsing_split(char *line, char **argv);
 
 #endif

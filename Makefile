@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/27 20:31:50 by hchang            #+#    #+#              #
-#    Updated: 2022/07/27 21:21:33 by hchang           ###   ########.fr        #
+#    Updated: 2022/07/28 19:08:58 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS = push_swap.c \
 	   command_3.c \
 	   parsing_1.c \
 	   parsing_2.c \
+	   parsing_3.c \
 	   indexing.c \
 	   operation.c \
 	   sort.c \
@@ -32,6 +33,7 @@ SRCS_BONUS = checker_bonus.c \
 			 command_3_bonus.c \
 			 parsing_1_bonus.c \
 			 parsing_2_bonus.c \
+			 parsing_3_bonus.c \
 			 indexing_bonus.c \
 			 operation_bonus.c \
 			 get_next_line.c \

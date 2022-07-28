@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:12:57 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/07/28 18:47:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/28 19:07:23 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ void	ft_error(char **strs);
 int		check_sign(char c, char next_c, int *sign);
 int		is_dup(int *arr, int i);
 void	ft_error_null(char *line);
-void	parsing_split(char *tmp, char *line, char **argv);
+void	parsing_split(char *line, char **argv);
 
 #endif
