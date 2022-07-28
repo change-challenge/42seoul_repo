@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:33 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:19:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:47:42 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,12 @@ int	parsing(char ***strs, char **argv)
 	line = 0;
 	while (*argv)
 	{
+		if (argv[ret][0] == 0)
+			ft_error_null(line);
 		if (!line)
 			line = ft_strdup(*argv++);
 		else
-		{
-			tmp = line;
-			line = ft_strjoin(line, " ");
-			free (tmp);
-			tmp = line;
-			line = ft_strjoin(line, *argv++);
-			free (tmp);
-		}
+			parsing_split(tmp, line, *argv);
 	}
 	*strs = ft_split(line, ' ');
 	free (line);

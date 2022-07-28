@@ -6,12 +6,12 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:12:57 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/07/27 21:19:08 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:47:40 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#ifndef CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
 # include "./libft/libft.h"
 # include "./get_next_line.h"
@@ -77,5 +77,7 @@ void	struct_free(t_info info);
 void	ft_error(char **strs);
 int		check_sign(char c, char next_c, int *sign);
 int		is_dup(int *arr, int i);
+void	ft_error_null(char *line);
+void	parsing_split(char *tmp, char *line, char **argv);
 
 #endif

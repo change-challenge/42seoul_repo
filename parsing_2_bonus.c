@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:19:05 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:44:05 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,6 @@ void	put_value(int *arr, t_stack *stack_a, int ac)
 		node->val = arr[i];
 		push_tail(stack_a, node);
 		++i;
-	}
-}
-
-void	struct_free(t_info info)
-{
-	t_node	*curr;
-	t_node	*tmp;
-
-	curr = info.stack_a->head;
-	while (curr)
-	{
-		tmp = curr;
-		curr = curr->next;
-		tmp->val = 0;
-		tmp->idx = 0;
-		free(tmp);
 	}
 }
 
@@ -102,4 +86,11 @@ int	*ft_adtoi(int i, char **strs, int ac)
 			ft_error(strs);
 	}
 	return (arr);
+}
+
+void	ft_error_null(char *line)
+{
+	free(line);
+	ft_putendl_fd("Error", 2);
+	exit(1);
 }

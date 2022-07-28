@@ -69,6 +69,22 @@ void	push_swap_read(t_info info)
 	}
 }
 
+void	struct_free(t_info info)
+{
+	t_node	*curr;
+	t_node	*tmp;
+
+	curr = info.stack_a->head;
+	while (curr)
+	{
+		tmp = curr;
+		curr = curr->next;
+		tmp->val = 0;
+		tmp->idx = 0;
+		free(tmp);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	char	**strs;

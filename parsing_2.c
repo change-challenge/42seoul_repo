@@ -49,3 +49,10 @@ int	*ft_adtoi(int i, char **strs, int ac)
 	}
 	return (arr);
 }
+
+void	ft_error_null(char *line)
+{
+	free(line);
+	ft_putendl_fd("Error", 2);
+	exit(1);
+}

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	this_is_for_you(t_stack *stack, int i, int chunk)
+int	is_boom(t_stack *stack, int i, int chunk)
 {
 	t_node	*curr;
 	int		cnt;
@@ -46,7 +46,7 @@ void	a_to_b(t_info info, int chunk)
 		}
 		else if (curr->idx > info.stack_b->size + chunk)
 		{
-			if (this_is_for_you(info.stack_a, info.stack_b->size, chunk) == 1)
+			if (is_boom(info.stack_a, info.stack_b->size, chunk) == 1)
 				rra(info.stack_a);
 			else
 				ra(info.stack_a);
