@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/28 18:44:05 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 09:30:18 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	put_value(int *arr, t_stack *stack_a, int ac)
 	stack_a->size = ac;
 	while (i < ac)
 	{
-		node = calloc(1, sizeof(t_node));
+		node = ft_calloc(1, sizeof(t_node));
 		node->val = arr[i];
 		push_tail(stack_a, node);
 		++i;

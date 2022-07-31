@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:56:01 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/27 21:21:10 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 09:29:55 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	ac = parsing(&strs, argv + 1);
-	info.stack_a = calloc(1, sizeof(t_stack));
-	info.stack_b = calloc(1, sizeof(t_stack));
+	info.stack_a = ft_calloc(1, sizeof(t_stack));
+	info.stack_b = ft_calloc(1, sizeof(t_stack));
 	arr = ft_adtoi(0, strs, ac);
 	put_value(arr, info.stack_a, ac);
 	indexing(arr, info.stack_a, ac);
