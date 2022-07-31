@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:47 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/31 09:30:18 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 12:17:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ int	*ft_adtoi(int i, char **strs, int ac)
 		while (strs[i][j])
 		{
 			num *= 10;
-			num += sign * (strs[i][j] - '0');
-			if (!ft_isdigit(strs[i][j++]) || (sign == 1 && num < 0) || \
-				(sign == -1 && num > 0))
+			num += (strs[i][j] - '0');
+			if (!ft_isdigit(strs[i][j++]))
 				ft_error(strs);
 		}
 		arr[i] = sign * num;
-		if (is_dup(arr, i++))
+		if ((sign == 1 && arr[i] < 0) || (sign == -1 && arr[i] > 0)
+			|| (is_dup(arr, i++)))
 			ft_error(strs);
 	}
 	return (arr);
