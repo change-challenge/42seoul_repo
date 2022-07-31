@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:53 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/31 12:17:41 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 13:18:13 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,24 @@ int	*init_arr(char **strs, int ac)
 
 int	*ft_adtoi(int i, char **strs, int ac)
 {
-	int	num;
-	int	j;
-	int	sign;
-	int	*arr;
+	unsigned int	num;
+	int				j;
+	int				sign;
+	int				*arr;
 
 	arr = init_arr(strs, ac);
 	while (strs[i])
 	{
 		num = 0;
 		sign = 1;
-		j = check_sign(strs[i][0], strs[i][1], &sign);
+		j = check_sign(strs[i], &sign);
 		while (strs[i][j])
 		{
-			num *= 10;
-			num += (strs[i][j] - '0');
-			if (!ft_isdigit(strs[i][j++]))
+			if (num > 214748364
+				|| (num == 214748364 && (7 + (sign < 0)) < strs[i][j] - '0')
+				|| !ft_isdigit(strs[i][j]))
 				ft_error(strs);
+			num = (num * 10) + (strs[i][j++] - '0');
 		}
 		arr[i] = sign * num;
 		if ((sign == 1 && arr[i] < 0) || (sign == -1 && arr[i] > 0)

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 07:43:03 by sesim             #+#    #+#             */
-/*   Updated: 2022/07/31 09:55:47 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 12:45:12 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sort_b(t_stack *stack);
 void	b_to_a(t_info info);
 void	ft_free(char **strs);
 int		parsing(char ***strs, char **argv);
-int		check_sign(char c, char next_c, int *sign);
+int		check_sign(char *str, int *sign);
 int		is_dup(int *arr, int i);
 int		*ft_adtoi(int i, char **strs, int ac);
 int		ft_swap(t_stack *stack);

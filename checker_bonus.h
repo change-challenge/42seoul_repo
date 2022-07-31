@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:12:57 by hojinjang         #+#    #+#             */
-/*   Updated: 2022/07/31 09:57:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 12:52:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "./libft/libft.h"
 # include "./get_next_line.h"
 
-# define MAX 2147483647
-# define MIN -2147483648
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -75,7 +74,7 @@ void	is_sorted_checker(t_info info);
 void	put_value(int *arr, t_stack *stack_a, int ac);
 void	struct_free(t_info info);
 void	ft_error(char **strs);
-int		check_sign(char c, char next_c, int *sign);
+int		check_sign(char *str, int *sign);
 int		is_dup(int *arr, int i);
 void	ft_error_null(char *line);
 char	*parsing_split(char *line, char **argv);

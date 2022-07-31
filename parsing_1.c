@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 20:57:42 by hchang            #+#    #+#             */
-/*   Updated: 2022/07/31 09:55:55 by hchang           ###   ########.fr       */
+/*   Updated: 2022/07/31 13:07:21 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,24 @@ int	parsing(char ***strs, char **argv)
 	return (ret);
 }
 
-int	check_sign(char c, char next_c, int *sign)
+int	check_sign(char *strs, int *sign)
 {
-	if (c == '+' && ft_isdigit(next_c))
-		return (1);
-	else if (c == '-' && ft_isdigit(next_c))
+	unsigned int	max;
+	unsigned int	num;
+	int				jdx;
+
+	jdx = 0;
+	num = 0;
+	max = INT_MAX;
+	if (strs[0] == '+' && ft_isdigit(strs[1]))
+		jdx = 1;
+	else if (strs[0] == '-' && ft_isdigit(strs[1]))
 	{
 		*sign = -1;
-		return (1);
+		jdx = 1;
+		max = INT_MIN;
 	}
-	else
-		return (0);
+	return (jdx);
 }
 
 void	ft_free(char **strs)
