@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/27 20:31:50 by hchang            #+#    #+#              #
-#    Updated: 2022/07/31 11:42:52 by hchang           ###   ########.fr        #
+#    Updated: 2022/08/01 09:33:43 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,11 @@ bonus : $(BONUS)
 
 $(NAME) : $(OBJS)
 	make -C ./libft
-	$(CC) $(CFLAGS) -L ./libft -l ft $(SRCS) -o $@ -g
+	$(CC) $(CFLAGS) -L ./libft -l ft $(SRCS) -o $@
 
 $(BONUS) : $(OBJS_BONUS)
 	make -C ./libft
-	$(CC) $(CFLAGS) -L ./libft -l ft $(SRCS_BONUS) -o $@ -g
+	$(CC) $(CFLAGS) -L ./libft -l ft $(SRCS_BONUS) -o $@
 
 clean :
 	make -C ./libft clean
