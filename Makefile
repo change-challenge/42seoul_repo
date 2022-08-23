@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 19:10:55 by hchang            #+#    #+#              #
-#    Updated: 2022/08/23 21:19:03 by hchang           ###   ########.fr        #
+#    Updated: 2022/08/23 21:54:51 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRCS = $(SRC_DIR)direction.c \
 		$(SRC_DIR)get_next_line_utils.c \
 		$(SRC_DIR)sprite.c \
 		$(SRC_DIR)hk_hook.c \
-		$(SRC_DIR)hk_hook2.c \
+		$(SRC_DIR)hk_loop_hook.c \
 		$(SRC_DIR)start_game.c \
 		$(SRC_DIR)utils1.c \
 		$(SRC_DIR)img.c \
@@ -47,7 +47,7 @@ SRCS_BONUS = $(SRCDIR_BONUS_DIR)direction_bonus.c \
 			$(SRCDIR_BONUS_DIR)get_next_line_utils_bonus.c \
 			$(SRCDIR_BONUS_DIR)sprite_bonus.c \
 			$(SRCDIR_BONUS_DIR)hk_hook_bonus.c \
-			$(SRCDIR_BONUS_DIR)hk_hook2_bonus.c \
+			$(SRCDIR_BONUS_DIR)hk_loop_hook_bonus.c \
 			$(SRCDIR_BONUS_DIR)start_game_bonus.c \
 			$(SRCDIR_BONUS_DIR)utils1_bonus.c \
 			$(SRCDIR_BONUS_DIR)img_bonus.c \

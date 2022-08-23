@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:53 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 19:10:04 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/23 21:38:58 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	init_enemy(t_game *game);
 void	init_img(t_game *game);
 void	draw_wall(t_game *game);
 void	draw_pce(t_game *game);
-int		hk_key_hook(int keycode, t_game *game);
+int		hk_hook2(int keycode, t_game *game);
 void	*ft_make_xpm_img(t_game *game, char *xpmFile);
 void	hk_make_rsprite(t_game *game);
 void	hk_make_lsprite(t_game *game);
