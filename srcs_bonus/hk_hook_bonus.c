@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:12 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 23:03:37 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:10:09 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int	hk_hook(int keycode, t_game *game)
 		down(game);
 	else if (keycode == KEY_W && game->lock == OFF)
 		up(game);
-	else
-		game->player.move_status = NONE;
 	if (game->lock == ON)
 		game->player.move_count++;
 	return (0);

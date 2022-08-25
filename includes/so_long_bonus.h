@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:53 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 23:05:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:09:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct s_player
 	int			y;
 	int			collect_status;
 	int			exit_flag;
-	int			move_status;
 	int			prev_move_status;
 }				t_player;
 
