@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:53 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 22:40:04 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 23:05:09 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,10 @@ void	*ft_make_xpm_img(t_game *game, char *xpmFile);
 void	hk_make_rsprite(t_game *game);
 void	hk_make_lsprite(t_game *game);
 int		destroy_win(t_game *game);
-void	left(int keycode, t_game *game);
-void	right(int keycode, t_game *game);
-void	up(int keycode, t_game *game);
-void	down(int keycode, t_game *game);
+void	left(t_game *game);
+void	right(t_game *game);
+void	up(t_game *game);
+void	down(t_game *game);
 void	move_player(t_game *game);
 int		hk_loop_hook(t_game *game);
 void	move_left(t_game *game);
