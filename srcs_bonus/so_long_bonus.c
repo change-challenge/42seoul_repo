@@ -6,11 +6,19 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:56 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 21:33:02 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 22:28:29 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void	start_game(t_game *game)
+{
+	init_game(game);
+	init_img(game);
+	draw_wall(game);
+	draw_pce(game);
+}
 
 int	main(int argc, char **argv)
 {
