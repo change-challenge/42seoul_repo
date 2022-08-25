@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:53 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 21:24:46 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 22:40:04 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ typedef struct s_player
 	int			collect;
 	int			x;
 	int			y;
-	int			prev_x;
-	int			prev_y;
 	int			collect_status;
 	int			exit_flag;
 	int			move_status;
@@ -121,7 +119,6 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_itoa(int n);
 int		hk_hook(int keycode, t_game *game);
-void	move(t_game *game);
 void	update(t_game *game);
 void	success_game(t_game *game);
 void	die_game(t_game *game);
