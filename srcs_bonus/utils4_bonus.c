@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:21:32 by hankyuhong        #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:52 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:12:07 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	*hk_realloc(void *buf, int before_size, int after_size)
 {

@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:24:58 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:11:44 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	die_game(t_game *game)
 {

@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:14 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 21:54:30 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:33:11 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	where_is_collect(t_game *game)
 {
@@ -54,4 +54,28 @@ void	out_move_cnt(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->img.cross, 0, 0);
 	mlx_string_put(game->mlx, game->win, 28, 32, 0, move_count);
 	free(move_count);
+}
+
+void	move_player(t_game *game)
+{
+	if (game->flag == LEFT)
+		move_left(game);
+	else if (game->flag == RIGHT)
+		move_right(game);
+	else if (game->flag == TOP)
+		move_up(game);
+	else if (game->flag == BOTTOM)
+		move_down(game);
+}
+
+int	hk_loop_hook(t_game *game)
+{
+	if (game->status == ON)
+	{
+		update(game);
+		out_move_cnt(game);
+		if (game->e_flag == ON)
+			update_enemy(game);
+	}
+	return (0);
 }

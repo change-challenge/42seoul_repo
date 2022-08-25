@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:21:30 by hankyuhong        #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:14:50 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	check_valid_char(t_game *game)
 {
@@ -23,11 +23,12 @@ void	check_valid_char(t_game *game)
 		j = 0;
 		while (j < game->map.width)
 		{
-			if (game->map.total_map[i][j] == 'P'
-			|| game->map.total_map[i][j] == 'C'
-			|| game->map.total_map[i][j] == 'E'
-			|| game->map.total_map[i][j] == 'e'
-			|| game->map.total_map[i][j] == '0')
+			if (game->map.total_map[i][j] != 'P'
+			&& game->map.total_map[i][j] != 'C'
+			&& game->map.total_map[i][j] != 'E'
+			&& game->map.total_map[i][j] != 'e'
+			&& game->map.total_map[i][j] != '0'
+			&& game->map.total_map[i][j] != '1')
 				hk_error("ERROR\nTHERE IS A NOT VALID CHARACTER!", game);
 			j++;
 		}

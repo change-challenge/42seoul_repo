@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:21:37 by hankyuhong        #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:51 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:12:04 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

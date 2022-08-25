@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:12 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 21:55:54 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:18:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ void	move(t_game *game)
 		game->player.move_count++;
 }
 
-int	hk_hook2(int keycode, t_game *game)
+int	hk_hook(int keycode, t_game *game)
 {
+	game->status = ON;
 	if (keycode == KEY_ESC)
 		destroy_win(game);
 	else if (keycode == KEY_A && game->lock == OFF)
@@ -34,13 +35,6 @@ int	hk_hook2(int keycode, t_game *game)
 		up(keycode, game);
 	else
 		game->player.move_status = NONE;
-	return (0);
-}
-
-int	hk_hook(int keycode, t_game *game)
-{
-	game->status = ON;
-	hk_hook2(keycode, game);
 	move(game);
 	return (0);
 }

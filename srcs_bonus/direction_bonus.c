@@ -6,11 +6,11 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:28 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:27 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:11:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	left(int keycode, t_game *game)
 {

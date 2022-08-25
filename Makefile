@@ -6,7 +6,7 @@
 #    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 19:10:55 by hchang            #+#    #+#              #
-#    Updated: 2022/08/23 21:54:51 by hchang           ###   ########.fr        #
+#    Updated: 2022/08/25 21:01:32 by hchang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,50 +14,50 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC_DIR = ./srcs/
-SRCDIR_BONUS_DIR = ./srcs_bonus/
+SRCDIR = ./srcs/
+SRCDIR_BONUS = ./srcs_bonus/
 
-SRCS = $(SRC_DIR)direction.c \
-		$(SRC_DIR)move_UD.c \
-		$(SRC_DIR)enemy.c \
-		$(SRC_DIR)print.c \
-		$(SRC_DIR)get_next_line.c \
-		$(SRC_DIR)so_long.c \
-		$(SRC_DIR)get_next_line_utils.c \
-		$(SRC_DIR)sprite.c \
-		$(SRC_DIR)hk_hook.c \
-		$(SRC_DIR)hk_loop_hook.c \
-		$(SRC_DIR)start_game.c \
-		$(SRC_DIR)utils1.c \
-		$(SRC_DIR)img.c \
-		$(SRC_DIR)utils2.c \
-		$(SRC_DIR)init_and_draw.c \
-		$(SRC_DIR)utils3.c \
-		$(SRC_DIR)map_check.c \
-		$(SRC_DIR)utils4.c \
-		$(SRC_DIR)move_RL.c \
-		$(SRC_DIR)window.c
+SRCS = $(SRCDIR)direction.c \
+		$(SRCDIR)move_UD.c \
+		$(SRCDIR)enemy.c \
+		$(SRCDIR)print.c \
+		$(SRCDIR)get_next_line.c \
+		$(SRCDIR)so_long.c \
+		$(SRCDIR)get_next_line_utils.c \
+		$(SRCDIR)sprite.c \
+		$(SRCDIR)hk_hook.c \
+		$(SRCDIR)hk_loop_hook.c \
+		$(SRCDIR)start_game.c \
+		$(SRCDIR)utils1.c \
+		$(SRCDIR)img.c \
+		$(SRCDIR)utils2.c \
+		$(SRCDIR)init_and_draw.c \
+		$(SRCDIR)utils3.c \
+		$(SRCDIR)map_check.c \
+		$(SRCDIR)utils4.c \
+		$(SRCDIR)move_RL.c \
+		$(SRCDIR)window.c
 
-SRCS_BONUS = $(SRCDIR_BONUS_DIR)direction_bonus.c \
-			$(SRCDIR_BONUS_DIR)move_UD_bonus.c \
-			$(SRCDIR_BONUS_DIR)enemy_bonus.c \
-			$(SRCDIR_BONUS_DIR)print_bonus.c \
-			$(SRCDIR_BONUS_DIR)get_next_line_bonus.c \
-			$(SRCDIR_BONUS_DIR)so_long_bonus.c \
-			$(SRCDIR_BONUS_DIR)get_next_line_utils_bonus.c \
-			$(SRCDIR_BONUS_DIR)sprite_bonus.c \
-			$(SRCDIR_BONUS_DIR)hk_hook_bonus.c \
-			$(SRCDIR_BONUS_DIR)hk_loop_hook_bonus.c \
-			$(SRCDIR_BONUS_DIR)start_game_bonus.c \
-			$(SRCDIR_BONUS_DIR)utils1_bonus.c \
-			$(SRCDIR_BONUS_DIR)img_bonus.c \
-			$(SRCDIR_BONUS_DIR)utils2_bonus.c \
-			$(SRCDIR_BONUS_DIR)init_and_draw_bonus.c \
-			$(SRCDIR_BONUS_DIR)utils3_bonus.c \
-			$(SRCDIR_BONUS_DIR)map_check_bonus.c \
-			$(SRCDIR_BONUS_DIR)utils4_bonus.c \
-			$(SRCDIR_BONUS_DIR)move_RL_bonus.c \
-			$(SRCDIR_BONUS_DIR)window_bonus.c
+SRCS_BONUS = $(SRCDIR_BONUS)direction_bonus.c \
+			$(SRCDIR_BONUS)move_UD_bonus.c \
+			$(SRCDIR_BONUS)enemy_bonus.c \
+			$(SRCDIR_BONUS)print_bonus.c \
+			$(SRCDIR_BONUS)get_next_line_bonus.c \
+			$(SRCDIR_BONUS)so_long_bonus.c \
+			$(SRCDIR_BONUS)get_next_line_utils_bonus.c \
+			$(SRCDIR_BONUS)sprite_bonus.c \
+			$(SRCDIR_BONUS)hk_hook_bonus.c \
+			$(SRCDIR_BONUS)hk_loop_hook_bonus.c \
+			$(SRCDIR_BONUS)start_game_bonus.c \
+			$(SRCDIR_BONUS)utils1_bonus.c \
+			$(SRCDIR_BONUS)img_bonus.c \
+			$(SRCDIR_BONUS)utils2_bonus.c \
+			$(SRCDIR_BONUS)init_and_draw_bonus.c \
+			$(SRCDIR_BONUS)utils3_bonus.c \
+			$(SRCDIR_BONUS)map_check_bonus.c \
+			$(SRCDIR_BONUS)utils4_bonus.c \
+			$(SRCDIR_BONUS)move_RL_bonus.c \
+			$(SRCDIR_BONUS)window_bonus.c
 
 OBJS = $(SRCS:%.c=%.o)
 
@@ -77,7 +77,7 @@ $(NAME) : $(OBJS)
 
 $(BONUS) : $(OBJS_BONUS)
 	make -C mlx/
-	$(CC) -o $(BONUS) $(OBJS) -L./mlx -lmlx -framework OpenGL -framework AppKit
+	$(CC) -o $(BONUS) $(OBJS_BONUS) -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 %.o		:		%.c
 		cc $(CFLAGS) -c $^ -I./ -o $@

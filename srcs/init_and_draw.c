@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:09 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 19:09:08 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:25:22 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_game(t_game *game)
 	game->r_sprite = 0;
 	game->l_sprite = 0;
 	game->status = OFF;
-	game->i = 0;
+	game->offset = 0;
 	game->e_flag = OFF;
 	init_player(game);
 }

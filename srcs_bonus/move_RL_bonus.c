@@ -6,18 +6,18 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:03 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/23 21:21:40 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/25 21:25:57 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	move_left_move(t_game *game)
 {
-	if (game->i >= 64)
+	if (game->offset >= 64)
 	{
 		game->flag = 0;
-		game->i = 0;
+		game->offset = 0;
 		game->player.x -= 64;
 		if (game->map.total_map[game->player.y / 64] \
 		[game->player.x / 64] == 'a')
@@ -42,18 +42,18 @@ void	move_left(t_game *game)
 	draw_wall(game);
 	draw_pce(game);
 	game->l_sprite = game->l_sprite->next;
-	game->i += 8;
+	game->offset += 8;
 	mlx_put_image_to_window(game->mlx, game->win, game->l_sprite->img, \
-	game->player.x - game->i, game->player.y);
+	game->player.x - game->offset, game->player.y);
 	move_left_move(game);
 }
 
 void	move_right_move(t_game *game)
 {
-	if (game->i >= 64)
+	if (game->offset >= 64)
 	{
 		game->flag = 0;
-		game->i = 0;
+		game->offset = 0;
 		game->player.x += 64;
 		if (game->map.total_map[game->player.y / 64] \
 		[game->player.x / 64] == 'a')
@@ -78,8 +78,8 @@ void	move_right(t_game *game)
 	draw_wall(game);
 	draw_pce(game);
 	game->r_sprite = game->r_sprite->next;
-	game->i += 8;
+	game->offset += 8;
 	mlx_put_image_to_window(game->mlx, game->win, game->r_sprite->img, \
-	game->player.x + game->i, game->player.y);
+	game->player.x + game->offset, game->player.y);
 	move_right_move(game);
 }
