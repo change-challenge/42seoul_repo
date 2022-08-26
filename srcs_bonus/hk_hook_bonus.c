@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hk_hook_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:12 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 23:10:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/27 03:43:15 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,5 @@ int	hk_hook(int keycode, t_game *game)
 		down(game);
 	else if (keycode == KEY_W && game->lock == OFF)
 		up(game);
-	if (game->lock == ON)
-		game->player.move_count++;
 	return (0);
 }

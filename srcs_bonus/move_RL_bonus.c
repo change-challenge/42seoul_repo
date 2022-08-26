@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_RL_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:03 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/25 21:25:57 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/27 03:43:30 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	move_left_move(t_game *game)
 {
 	if (game->offset >= 64)
 	{
+		game->player.move_count++;
 		game->flag = 0;
 		game->offset = 0;
 		game->player.x -= 64;
@@ -52,6 +53,7 @@ void	move_right_move(t_game *game)
 {
 	if (game->offset >= 64)
 	{
+		game->player.move_count++;
 		game->flag = 0;
 		game->offset = 0;
 		game->player.x += 64;
