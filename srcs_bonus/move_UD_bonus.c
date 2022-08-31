@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_UD_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:00 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/27 03:43:39 by hojinjang        ###   ########.fr       */
+/*   Updated: 2022/08/31 21:25:51 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	move_up_move(t_game *game)
 	if (game->offset >= 64)
 	{
 		game->player.move_count++;
+		printf("MOVE COUNT : %d\n", game->player.move_count);
 		game->flag = 0;
 		game->offset = 0;
 		game->player.y -= 64;
@@ -64,6 +65,7 @@ void	move_down_move(t_game *game)
 	if (game->offset >= 64)
 	{
 		game->player.move_count++;
+		printf("MOVE COUNT : %d\n", game->player.move_count);
 		game->flag = 0;
 		game->offset = 0;
 		game->player.y += 64;
