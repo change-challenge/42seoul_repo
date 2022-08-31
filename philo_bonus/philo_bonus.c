@@ -96,9 +96,9 @@ void	*monitor(void *param)
 	{
 		sem_wait(philo->info.sema.print);
 		now_t = get_time();
-		if (now_t > philo->info.arg.die_time + philo->last_eat_t)
+		if (now_t > philo->info.arg.die_time + philo->last_eat_t) // 구사일생 가능 == 이면 
 		{
-			printf("%lu %d died\n", now_t - (*philo).info.birth_t, philo->idx + 1);
+			printf("%lu %d died\n", now_t - (*philo).info.birth_t - 1, philo->idx + 1); // 이러면 안밀린다 ?
 			exit(1);
 		}
 		sem_post(philo->info.sema.print);
@@ -122,27 +122,28 @@ void action(t_philo philo)
 	exit(1);
 }
 
-int init_philo(t_philo *philo, t_info *info, t_arg *arg)
+int init_philo(t_philo *philo, t_info *info, t_arg *arg, int argc)
 {
-	(*philo).last_eat_t = get_time();
-	info->sema.fork = sem_open("sem_fork", O_CREAT | O_EXCL, 0644, arg->n_philo);
-	if (info->sema.fork == SEM_FAILED)
-	{
+	// (*philo).last_eat_t = get_time();
+	// info->sema.fork = sem_open("sem_fork", O_CREAT | O_EXCL, 0644, arg->n_philo);
+	// if (info->sema.fork == SEM_FAILED)
+	// {
 		sem_unlink("sem_fork");
 		info->sema.fork = sem_open("sem_fork", O_CREAT | O_EXCL, 0644, arg->n_philo);
-	}
-	info->sema.print = sem_open("sem_print", O_CREAT | O_EXCL, 0644, 1);
-	if (info->sema.print == SEM_FAILED)
-	{
+	// }
+	// info->sema.print = sem_open("sem_print", O_CREAT | O_EXCL, 0644, 1);
+	// if (info->sema.print == SEM_FAILED)
+	// {
 		sem_unlink("sem_print");
 		info->sema.print = sem_open("sem_print", O_CREAT | O_EXCL, 0644, 1);
-	}
-	info->sema.eat_checker = sem_open("eat_checker", O_CREAT | O_EXCL, 0644, 0);
-	if (info->sema.eat_checker == SEM_FAILED)
-	{
+	// }
+	if (argc == 6)
+		info->sema.eat_checker = sem_open("eat_checker", O_CREAT | O_EXCL, 0644, 0);
+	// if (info->sema.eat_checker == SEM_FAILED)
+	// {
 		sem_unlink("eat_checker");
 		info->sema.eat_checker = sem_open("eat_checker", O_CREAT | O_EXCL, 0644, 0);
-	}
+	// }
 	return (SUCCESS);
 }
 
@@ -174,7 +175,7 @@ int	main(int argc, char **argv)
 	if (parse_arg(argc, argv, &philo.info) == ERROR)
 		return (ERROR);
 	pid = malloc(sizeof(pid_t) * philo.info.arg.n_philo);
-	if (init_philo(&philo, &philo.info, &philo.info.arg) == ERROR)
+	if (init_philo(&philo, &philo.info, &philo.info.arg, argc) == ERROR)
 		return (ERROR);
 	idx = 0;
 
