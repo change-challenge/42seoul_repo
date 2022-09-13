@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:44:57 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 21:17:28 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/14 01:33:41 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int			init_mutex(t_info *info, pthread_mutex_t **fork);
 int			init_philo(t_philo **philo, t_info *info, \
 			t_arg *arg, pthread_mutex_t *fork);
 void		*action(void *param);
+int			ft_isdigit(int c);
 char		*ft_strstr(const char *haystack, const char *needle);
 
 #endif

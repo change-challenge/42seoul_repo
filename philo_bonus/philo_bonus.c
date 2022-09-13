@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:09:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 22:01:38 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/14 01:35:00 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	parse_arg(int argc, char **argv, t_info *info)
 	else
 		info->arg.must_eat = 0;
 	if (info->arg.n_philo <= 0 || info->arg.die_time <= 0
-		||info->arg.eat_time < 0 || info->arg.sleep_time < 0
+		||info->arg.eat_time <= 0 || info->arg.sleep_time <= 0
 		|| info->arg.must_eat < 0)
 		return (ERROR);
 	return (SUCCESS);

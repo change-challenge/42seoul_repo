@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:02:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 21:18:01 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/14 01:33:30 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_isdigit(int c)
+{
+	if ((c >= '0' && c <= '9'))
+		return (1);
+	return (0);
+}
 
 int	ft_isspace(char c)
 {
