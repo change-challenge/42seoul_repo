@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:09:13 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 20:44:09 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 21:16:35 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ size_t	get_time(void);
 void	smart_timer(size_t time);
 void	philo_print(t_philo *philo, t_info *info, int idx, char *str);
 void	action(t_philo *philo);
+char	*ft_strstr(const char *haystack, const char *needle);
 
 #endif

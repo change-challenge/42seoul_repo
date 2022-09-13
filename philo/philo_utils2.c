@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 16:51:26 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 17:08:27 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 21:16:56 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	philo_print(t_philo *philo, t_info *info, int idx, char *str)
 	if (info->stat.end == 0)
 	{
 		printf("%ld %d %s\n", get_t() - info->birth_t, idx + 1, str);
-		if (strstr(str, "ea"))
+		if (ft_strstr(str, "ea"))
 		{
 			philo->last_eat_t = get_t();
 			if (++(philo->cnt_eat) == philo->info->arg.must_eat)

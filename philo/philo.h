@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:44:57 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 17:08:31 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 21:17:28 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ int			init_mutex(t_info *info, pthread_mutex_t **fork);
 int			init_philo(t_philo **philo, t_info *info, \
 			t_arg *arg, pthread_mutex_t *fork);
 void		*action(void *param);
+char		*ft_strstr(const char *haystack, const char *needle);
 
 #endif

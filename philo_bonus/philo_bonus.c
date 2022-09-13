@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:09:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 21:05:59 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 21:09:06 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	init_philo(t_info *info, t_arg *arg, int argc)
 		O_CREAT | O_EXCL, 0644, 0);
 	}
 }
-
 
 void	work(t_philo *philo, pid_t *pid, int argc)
 {
