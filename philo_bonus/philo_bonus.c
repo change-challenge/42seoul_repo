@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:09:11 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 21:09:06 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 22:01:38 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 	sem_unlink("sem_fork");
 	sem_unlink("sem_print");
 	free(pid);
-	while (idx--)
+	while (--idx)
 		waitpid(-1, 0, 0);
 	return (0);
 }
