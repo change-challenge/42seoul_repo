@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 14:44:55 by hchang            #+#    #+#             */
-/*   Updated: 2022/09/13 18:18:14 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/13 22:15:49 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	init_mutex(t_info *info, pthread_mutex_t **fork)
 {
 	int	i;
 
+	i = 0;
 	*fork = malloc(sizeof(pthread_mutex_t) * info->arg.n_philo);
 	if (!(*fork))
 		return (ERROR);
-	i = 0;
 	while (i < info->arg.n_philo)
 		if (pthread_mutex_init(&(*fork)[i++], PTHREAD_MUTEX_NORMAL) != 0)
 			return (ERROR);
