@@ -1,5 +1,17 @@
-#ifndef PHILO_H
-# define PHILO_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/13 15:09:13 by hchang            #+#    #+#             */
+/*   Updated: 2022/09/13 20:44:09 by hchang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef PHILO_BONUS_H
+# define PHILO_BONUS_H
 
 # include <string.h>
 # include <stdio.h>
@@ -12,12 +24,6 @@
 
 # define INT_MAX			2147483647
 # define INT_MIN			-2147483648
-
-// typedef struct s_status
-// {
-// 	int	end;
-// 	int	n_full;
-// }	t_status;
 
 typedef struct s_sem
 {
@@ -41,12 +47,11 @@ typedef struct s_info
 	t_sem		sema;
 	size_t		birth_t;
 	pid_t		*pid;
-	// t_status 	stat;
 }	t_info;
 
 typedef struct s_philo
 {
-	int 	idx;
+	int		idx;
 	t_info	info;
 	size_t	last_eat_t;
 	int		eat_cnt;
@@ -58,5 +63,10 @@ enum e_enum
 	SUCCESS
 };
 
-long long	ft_atoi(const	char	*str);
+int		ft_atoi(const char *str);
+size_t	get_time(void);
+void	smart_timer(size_t time);
+void	philo_print(t_philo *philo, t_info *info, int idx, char *str);
+void	action(t_philo *philo);
+
 #endif

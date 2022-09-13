@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/13 14:44:52 by hchang            #+#    #+#              #
+#    Updated: 2022/09/13 17:02:51 by hchang           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 
 NAME = philo
@@ -5,7 +17,7 @@ NAME = philo
 CFLAGS = -Wall -Werror -Wextra
 # CFLAGS = -Wall -Werror -Wextra -fsanitize=thread
 
-SRCS = philo.c ft_atoi.c
+SRCS = philo.c philo_utils.c  philo_utils2.c philo_utils3.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -25,7 +37,6 @@ fclean: clean
 
 debug: all
 	$(CC) -lpthread $(OBJS) -o $(NAME)
-#$(CC) -lpthread $(OBJS) -o $(NAME) -fsanitize=address
 
 lldb: all
 	$(CC) $(CFLAGS) -lpthread $(SRCS) -o $(NAME) -g3

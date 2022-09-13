@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "locale": "c"
+        "locale": "c",
+        "semaphore.h": "c",
+        "philo.h": "c",
+        "philo_bonus.h": "c"
     }
 }

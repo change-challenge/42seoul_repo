@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: hchang <hchang@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/09/13 15:09:16 by hchang            #+#    #+#              #
+#    Updated: 2022/09/13 19:12:05 by hchang           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CC = cc
 
 NAME = philo_bonus
@@ -5,7 +17,7 @@ NAME = philo_bonus
 CFLAGS = -Wall -Werror -Wextra
 # CFLAGS = -Wall -Werror -Wextra -g -fsanitize=thread
 
-SRCS = philo_bonus.c ft_atoi.c
+SRCS = philo_bonus.c philo_utils_bonus.c philo_utils2_bonus.c philo_utils3_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 

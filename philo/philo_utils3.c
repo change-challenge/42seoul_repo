@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   philo_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jujeon <jujeon@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 22:24:10 by jujeon            #+#    #+#             */
-/*   Updated: 2022/08/04 17:39:51 by jujeon           ###   ########seoul.kr  */
+/*   Created: 2022/09/13 17:02:11 by hchang            #+#    #+#             */
+/*   Updated: 2022/09/13 19:06:21 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "philo.h"
+
+int	ft_isspace(char c)
 {
-	if (48 <= c && c <= 57)
-	{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f'
+		|| c == '\r' || c == ' ')
 		return (1);
-	}
-	else
-		return (0);
+	return (0);
 }
