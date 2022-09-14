@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:13:49 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:56:30 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/14 22:03:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(void)
 			continue ;
 		g_exit_code = execute(&info, info.root);
 		close_main(&info, str);
+		printf("my exit code : %d\n", g_exit_code);
 	}
 	return (0);
 }

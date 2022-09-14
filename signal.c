@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:14:03 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 18:28:32 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/14 22:03:42 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 extern int	g_exit_code;
 
-void	signal_handler(int signal)
+void	signal_handler(int sig)
 {
-	if (signal == SIGINT)
+	if (sig == SIGINT)
 	{
 		printf("\n");
 		rl_on_new_line();
@@ -24,8 +24,6 @@ void	signal_handler(int signal)
 		rl_redisplay();
 		g_exit_code = 1;
 	}
-	else if (signal == SIGQUIT)
-		return ;
 }
 
 void	signal_handler2(int signal)
@@ -35,11 +33,7 @@ void	signal_handler2(int signal)
 		g_exit_code = 130;
 		printf("\n");
 	}
-}
-
-void	signal_handler3(int signal)
-{
-	if (signal == SIGQUIT)
+	else if (signal == SIGQUIT)
 	{
 		g_exit_code = 131;
 		printf("^\\Quit: 3\n");
@@ -49,10 +43,16 @@ void	signal_handler3(int signal)
 void	set_signal_handler(int flag)
 {
 	if (!flag)
+	{
+		signal(SIGQUIT, SIG_IGN);
 		signal(SIGINT, signal_handler);
+	}
 	else
+	{
+		signal(SIGQUIT, signal_handler2);
 		signal(SIGINT, signal_handler2);
-	signal(SIGQUIT, SIG_IGN);
+	}
+
 }
 
 void	hd_sig(int signum)

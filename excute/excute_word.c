@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excute_word.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:15:48 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:15:48 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/14 22:06:30 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	execute_word(t_info *info, t_tree *myself)
 		free(path);
 	free(argv);
 	free(env);
-	if (g_exit_code == 130)
+	if (g_exit_code == 130 || g_exit_code == 131)
 		return (g_exit_code);
 	return (WEXITSTATUS(tool.status));
 }
