@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excute_redir_inout.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:15:52 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:15:52 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:53:40 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ int	redir_input(t_info *info, t_tree *myself)
 	if (!info->redir_in_flag)
 		flag_on_redirin(info, myself, &r_fd);
 	left = execute(info, myself->left_child);
+	if (info->redir_cnt == 1)
+		first_redir(info);
 	if (left)
-	{
-		if (info->redir_cnt == 1)
-			first_redir(info);
 		return (left);
-	}
 	if (r_fd == -1)
-		return (puterr_exit_code(file_name, 0, REPLACE_ONE));
+		return (puterr_exit_code(file_name, 0, 0));
 	return (0);
 }
 
@@ -68,11 +66,11 @@ int	redir_output(t_info *info, t_tree *myself)
 		dup2(r_fd, STDOUT_FILENO);
 	close(r_fd);
 	left = execute(info, myself->left_child);
+	if (info->redir_cnt == 1)
+		first_redir(info);
 	if (left)
 	{
-		if (info->redir_cnt == 1)
-			first_redir(info);
-		if (left != 1)
+		if (left != 127)
 			unlink(file_name);
 		return (left);
 	}

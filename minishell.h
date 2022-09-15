@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:13:55 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 19:49:26 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 13:41:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int		lexer(char *str, t_info *info);
 
 	/* input_check.c */
 int		input_check(char *str);
-int		space_check(char *str);
+int		enter_check(char *str);
 
 	/* tokenize.c */	
 void	tokenize(t_info *info);

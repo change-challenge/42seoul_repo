@@ -2,7 +2,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LINKING_FLAGS = -L/Users/hchang/.brew/opt/readline/lib -lreadline
 COMFILE_FLAGS = -I/Users/hchang/.brew/opt/readline/include
-DFLAGS = -g3 -fsanitize=address
 
 RM = rm -f
 
@@ -50,10 +49,10 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	@make -C ./libft
 	@./make.sh
-	@$(CC) $(DFLAGS) $(CFLAGS) $(OBJS) -o $(NAME) $(LINKING_FLAGS) $(COMFILE_FLAGS) ./libft/libft.a
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LINKING_FLAGS) $(COMFILE_FLAGS) ./libft/libft.a
 
 %.o : %.c
-	@$(CC) $(DFLAGS) $(COMFILE_FLAGS) -c $< -o $@
+	@$(CC) $(COMFILE_FLAGS) -c $< -o $@
 
 clean :
 	@make -C ./libft fclean
@@ -68,7 +67,7 @@ re :
 	@make all
 
 run :
-	@cat ascii_art/sun
+	@cat ascii_art/sun2
 	@make re
 	@make clean
 	@exec ./minishell

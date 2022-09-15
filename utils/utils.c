@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:15:29 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:15:30 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:43:19 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	puterr_exit_code(char *str, char *arg, int code)
 	if (code)
 		return (code);
 	else
-		return (errno);
+		return (1);
 }
 
 int	ft_free(char **split)

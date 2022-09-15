@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:14:53 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 19:24:24 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 13:41:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,11 @@ int	is_quotes(char *str, t_info *info)
 		return (FALSE);
 }
 
-int	space_check(char *str)
+int	enter_check(char *str)
 {
 	size_t	i;
 
 	i = 0;
-	// if (!str)
-	// 	return (TRUE);
 	while (str[i])
 	{
 		if (str[i] == 0 && i++)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excute_pipe.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:16:02 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:16:03 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:49:45 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	execute_pipe(t_info *info, t_tree *myself)
 	dup2(in_fd, STDIN_FILENO);
 	waitpid(left, &tool.status, 0);
 	waitpid(right, &tool.status, 0);
+	close(in_fd);
 	return (WEXITSTATUS(tool.status));
 }

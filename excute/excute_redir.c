@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excute_redir.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:16:19 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:16:19 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:53:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ int	execute_redir(t_info *info, t_tree *myself)
 		ret = redir_input(info, myself);
 	else if (myself->dlist->token[0] == '>')
 		ret = redir_output(info, myself);
-	if (!ret && info->redir_cnt == 1)
-		first_redir(info);
 	info->redir_cnt--;
 	return (ret);
 }

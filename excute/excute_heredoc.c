@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   excute_heredoc.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kyhan <kyhan@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:16:14 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/13 20:16:15 by kyhan            ###   ########.fr       */
+/*   Updated: 2022/09/15 17:27:11 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	change2file(t_info *info, t_tree *myself)
 		return ;
 	change2file(info, myself->left_child);
 	change2file(info, myself->right_child);
-	if (myself->dlist->token[1] != '<')
+	if (!myself->dlist->token[0] || myself->dlist->token[1] != '<')
 		return ;
 	info->hd_cnt++;
 	file_num = ft_itoa(info->hd_cnt);
@@ -78,7 +78,7 @@ void	do_here_doc(t_info *info, t_tree *myself)
 		return ;
 	do_here_doc(info, myself->left_child);
 	do_here_doc(info, myself->right_child);
-	if (myself->dlist->token[1] != '<')
+	if (!myself->dlist->token[0] || myself->dlist->token[1] != '<')
 		return ;
 	info->hd_cnt++;
 	limiter = ft_strdup(&myself->dlist->token[2]);
@@ -93,6 +93,7 @@ int	here_doc(t_info *info, t_tree *myself)
 	t_ftool	tool;
 
 	tool.pid = fork();
+	signal(SIGQUIT, SIG_IGN);
 	if (!tool.pid)
 	{
 		signal(SIGINT, hd_sig);
@@ -102,5 +103,6 @@ int	here_doc(t_info *info, t_tree *myself)
 	waitpid(tool.pid, &tool.status, 0);
 	change2file(info, myself);
 	g_exit_code = WEXITSTATUS(tool.status);
+	signal(SIGQUIT, signal_handler2);
 	return (WEXITSTATUS(tool.status));
 }

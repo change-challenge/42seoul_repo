@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:13:42 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 21:29:39 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 18:28:59 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	init_env(t_info *info)
 	info->env = 0;
 	while (environ[i])
 	{
+		if (!ft_strncmp(environ[i], "OLDPWD=", 7) && ++i)
+			continue ;
 		add_list(&info->env, environ[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:14:03 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 22:03:42 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 13:28:16 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	set_signal_handler(int flag)
 		signal(SIGQUIT, signal_handler2);
 		signal(SIGINT, signal_handler2);
 	}
-
 }
 
 void	hd_sig(int signum)

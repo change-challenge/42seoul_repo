@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:13:49 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 22:09:43 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 18:39:32 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	before_cmd(char *str, t_info *info)
 		printf("exit\n");
 		exit(0);
 	}
-	if (space_check(str) == TRUE)
+	if (enter_check(str) == TRUE)
 	{
 		free(str);
 		return (1);

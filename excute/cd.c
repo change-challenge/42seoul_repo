@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:14:17 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/14 18:01:44 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 18:43:19 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,19 @@ int	cd(t_info *info, t_dlist *list)
 			return (put_str_err(list, "HOME not set"));
 		return (chdir(tmp));
 	}
+	if (list->next->token[0] == '~' && !list->next->token[1])
+		return (chdir("/Users/hchang"));
 	if (list->next->next)
 		return (put_str_err(list, "too many arguments"));
 	if (list->next->token[0] == '-' && list->next->token[1] == '\0')
 		return (set_cd_minus(info, list));
 	old_path = getcwd(NULL, 0);
-	if (!old_path && put_str_err(list, "directory unlinked"))
-		return (chdir(get_path_cd(info, "OLDPWD=")));
 	if (chdir(list->next->token))
 	{
 		free(old_path);
 		return (puterr_exit_code("cd", 0, 0));
 	}
-	add_export(info, old_path);
+	if (old_path)
+		add_export(info, old_path);
 	return (0);
 }
