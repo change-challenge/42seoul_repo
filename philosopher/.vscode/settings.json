@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "locale": "c",
+        "semaphore.h": "c",
+        "philo.h": "c",
+        "philo_bonus.h": "c",
+        "unistd.h": "c",
+        "time.h": "c"
+    }
+}
