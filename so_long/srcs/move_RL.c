@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_RL.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hojinjang <hojinjang@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:25:03 by kyhan             #+#    #+#             */
-/*   Updated: 2022/08/31 21:24:44 by hchang           ###   ########.fr       */
+/*   Updated: 2022/08/27 03:41:28 by hojinjang        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	move_left_move(t_game *game)
 	if (game->offset >= 64)
 	{
 		game->player.move_count++;
-		printf("MOVE COUNT : %d\n", game->player.move_count);
 		game->flag = 0;
 		game->offset = 0;
 		game->player.x -= 64;
@@ -55,7 +54,6 @@ void	move_right_move(t_game *game)
 	if (game->offset >= 64)
 	{
 		game->player.move_count++;
-		printf("MOVE COUNT : %d\n", game->player.move_count);
 		game->flag = 0;
 		game->offset = 0;
 		game->player.x += 64;

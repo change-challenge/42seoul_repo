@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 20:13:55 by kyhan             #+#    #+#             */
-/*   Updated: 2022/09/15 13:41:45 by hchang           ###   ########.fr       */
+/*   Updated: 2022/09/15 18:54:48 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@
 
 # define VERTICAL 1
 # define HORIZONTAL 0
-
-# define REPLACE_ONE 140
 
 typedef struct s_operation
 {

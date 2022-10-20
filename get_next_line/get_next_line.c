@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 17:20:02 by hchang            #+#    #+#             */
-/*   Updated: 2022/05/13 17:42:56 by hchang           ###   ########.fr       */
+/*   Updated: 2022/05/13 13:00:04 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,13 @@ t_list	*read_line(int fd, t_list **t_back, ssize_t *rd)
 	return (ft_lstnew_add_back(t_back, tmp));
 }
 
-char	*make_line(t_list **res_lst, size_t res_len)
+char	*make_line(t_list **res_lst, size_t res_len, char *res)
 {
-	size_t	tmp;
 	char	*save;
+	size_t	tmp;
 	size_t	enter_pos;
 	t_list	*clean_lst;
-	char	*res;
 
-	res = (char *)malloc(sizeof(char) * (res_len + 1));
-	if (!res)
-		return (NULL);
 	tmp = 0;
 	res[0] = 0;
 	clean_lst = *res_lst;
@@ -102,6 +98,7 @@ char	*make_line(t_list **res_lst, size_t res_len)
 
 char	*get_next_line(int fd)
 {
+	char			*res;
 	static t_list	*res_lst;
 	size_t			res_len;
 	ssize_t			rd;
@@ -116,5 +113,5 @@ char	*get_next_line(int fd)
 	if (!res)
 		return (NULL);
 	res[res_len] = '\0';
-	return (make_line(&res_lst, res_len));
+	return (make_line(&res_lst, res_len, res));
 }

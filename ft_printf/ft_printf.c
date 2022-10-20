@@ -6,7 +6,7 @@
 /*   By: hchang <hchang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 03:09:34 by minsuki2          #+#    #+#             */
-/*   Updated: 2022/03/09 17:10:33 by hchang           ###   ########.fr       */
+/*   Updated: 2022/03/09 15:34:02 by hchang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static int	recursive_printf(const char *cur, va_list *ap, int *cnt,
 	if (*cur)
 		cur++;
 	check = recursive_printf(cur, ap, cnt, &last);
-	if (check == ERROR)
+	if (check == -1)
 		return (ERROR);
 	return (*cnt);
 }
